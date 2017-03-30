@@ -31,8 +31,6 @@ public interface Router {
      * @param response    The response object for writing back responses to the client
      * @param restRequest A summary of the HTTP request, mainly used for navigation
      * @return A rest action that can be executed
-     * @throws InstantiationException If there is an error building the class
-     * @throws IllegalAccessException If a class with wrong visibility is trying to be created
      */
     RestActionBuilder prepareAction(
             TeamRawService parentService,

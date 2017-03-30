@@ -82,8 +82,6 @@ public class ActionTree {
      *
      * @param restRequest Request information containing the path at which the builder should be retrieved.
      * @return Action builder at the given path, or a default action builder if the given path doesn't exist
-     * @throws InstantiationException If the class cannot be built
-     * @throws IllegalAccessException If the class visibility of the class to be built is wrong
      */
     public ServiceFactory getFactory(RestRequest restRequest) {
         // TODO: This needs reworking badly...

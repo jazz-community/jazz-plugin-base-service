@@ -20,3 +20,4 @@ convert_RTC_SDK_to_p2_repo.bat
 # idea files
 .idea
 *.iml
+target/

@@ -57,8 +57,6 @@ public class ActionNode {
      *
      * @param method HTTP method
      * @return Action builder corresponding to the passed method
-     * @throws InstantiationException If the class cannot be built
-     * @throws IllegalAccessException If the class visibility of the class to be built is wrong
      */
     public ServiceFactory getActionBuilder(HttpMethod method) {
         return this.factories.get(method);
