@@ -87,8 +87,8 @@ public abstract class BaseService extends TeamRawService {
 	}
 
 	protected final RestActionBuilder prepareRequest(String uri,
-																					HttpServletRequest request,
-																					HttpServletResponse response) {
+													 HttpServletRequest request,
+													 HttpServletResponse response) {
 		HttpMethod method = HttpMethod.fromString(request.getMethod());
 		@SuppressWarnings("unchecked")
 		RestRequest restRequest = new RestRequest(method, uri, request.getParameterMap());
