@@ -23,7 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class BaseService extends TeamRawService {
     protected final RestFactoryPrototype factoryPrototype = new RestFactoryPrototype();
-	private final ServiceFactory defaultFactory = new RestFactory(DefaultRestService.class);
+	private final ServiceFactory defaultFactory =
+			new RestFactory(DefaultRestService.class);
 
 	protected final Router router = new ConcurrentTreeRouter(defaultFactory);
 
