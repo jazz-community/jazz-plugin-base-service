@@ -20,6 +20,11 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tycho-version>1.0.0</tycho-version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -34,7 +39,7 @@
                 <!-- enable tycho build extension -->
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${tycho-version}</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>
@@ -49,8 +54,38 @@
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>target-platform-configuration</artifactId>
-                <version>1.0.0</version>
+                <version>${tycho-version}</version>
                 <configuration>
+                    <!--In some development environments / xsd validators, this section will pop up as an error.-->
+                    <!--You can safely ignore it. In case it's too annoying, turn of validation for this pom.-->
+                    <environments>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>linux</os>
+                            <ws>gtk</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86</arch>
+                        </environment>
+                        <environment>
+                            <os>win32</os>
+                            <ws>win32</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                        <environment>
+                            <os>macosx</os>
+                            <ws>cocoa</ws>
+                            <arch>x86_64</arch>
+                        </environment>
+                    </environments>
+
                 </configuration>
             </plugin>
             <plugin>
@@ -96,7 +131,7 @@
                                         <artifactId>
                                             tycho-packaging-plugin
                                         </artifactId>
-                                        <versionRange>1.0.0</versionRange>
+                                        <versionRange>${tycho-version}</versionRange>
                                         <goals>
                                             <goal>build-qualifier</goal>
                                             <goal>validate-id</goal>
@@ -104,7 +139,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -113,13 +148,13 @@
                                         <artifactId>
                                             tycho-compiler-plugin
                                         </artifactId>
-                                        <versionRange>1.0.0</versionRange>
+                                        <versionRange>${tycho-version}</versionRange>
                                         <goals>
                                             <goal>compile</goal>
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -140,7 +175,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
