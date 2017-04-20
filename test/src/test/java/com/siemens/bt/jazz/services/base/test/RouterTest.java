@@ -18,6 +18,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * This implicitly tests the functionality of ActionTree. ActionNode is only a container class and need not be tested
+ * more deeply. ActionTree however should be tested by this class because all services functionality depends on it
+ * working properly.
+ */
 public class RouterTest {
 
     private Router router;
