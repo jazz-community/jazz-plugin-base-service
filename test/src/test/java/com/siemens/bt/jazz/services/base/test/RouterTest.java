@@ -5,12 +5,12 @@ import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
 import com.siemens.bt.jazz.services.base.test.mock.MockRequest;
 import com.siemens.bt.jazz.services.base.test.mock.MockResponse;
 import com.siemens.bt.jazz.services.base.test.mock.MockTeamService;
-import com.siemens.bt.jazz.services.base.test.rest.DefaultRestService;
-import com.siemens.bt.jazz.services.base.test.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.test.rest.RestRequest;
-import com.siemens.bt.jazz.services.base.test.router.Router;
-import com.siemens.bt.jazz.services.base.test.router.factory.RestFactory;
-import com.siemens.bt.jazz.services.base.test.router.tree.ConcurrentTreeRouter;
+import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
+import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
+import com.siemens.bt.jazz.services.base.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.router.Router;
+import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
+import com.siemens.bt.jazz.services.base.router.tree.ConcurrentTreeRouter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +30,7 @@ public class RouterTest {
 
         RestActionBuilder builder = router.prepareAction(
                 mockTeamService,
+                null,
                 mockRequest,
                 mockResponse,
                 restRequest);

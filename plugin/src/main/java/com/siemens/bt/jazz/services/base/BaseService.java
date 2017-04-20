@@ -1,16 +1,16 @@
-package com.siemens.bt.jazz.services.base.test;
+package com.siemens.bt.jazz.services.base;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
-import com.siemens.bt.jazz.services.base.test.rest.DefaultRestService;
-import com.siemens.bt.jazz.services.base.test.rest.RestAction;
-import com.siemens.bt.jazz.services.base.test.rest.RestRequest;
-import com.siemens.bt.jazz.services.base.test.router.tree.ConcurrentTreeRouter;
-import com.siemens.bt.jazz.services.base.test.router.Router;
-import com.siemens.bt.jazz.services.base.test.router.factory.RestFactory;
-import com.siemens.bt.jazz.services.base.test.router.factory.RestFactoryPrototype;
-import com.siemens.bt.jazz.services.base.test.router.factory.ServiceFactory;
-import com.siemens.bt.jazz.services.base.test.rest.RestActionBuilder;
+import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
+import com.siemens.bt.jazz.services.base.rest.RestAction;
+import com.siemens.bt.jazz.services.base.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.router.tree.ConcurrentTreeRouter;
+import com.siemens.bt.jazz.services.base.router.Router;
+import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
+import com.siemens.bt.jazz.services.base.router.factory.RestFactoryPrototype;
+import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 
 import java.io.IOException;
 
@@ -95,6 +95,6 @@ public abstract class BaseService extends TeamRawService {
 		HttpMethod method = HttpMethod.fromString(request.getMethod());
 		@SuppressWarnings("unchecked")
 		RestRequest restRequest = new RestRequest(method, uri, request.getParameterMap());
-		return router.prepareAction(this, request, response, restRequest);
+		return router.prepareAction(this, this.getLog(), request, response, restRequest);
 	}
 }

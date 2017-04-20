@@ -1,8 +1,8 @@
 package com.siemens.bt.jazz.services.base.test.helper;
 
 import com.ibm.team.repository.service.TeamRawService;
-import com.siemens.bt.jazz.services.base.test.rest.AbstractRestService;
-import com.siemens.bt.jazz.services.base.test.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.rest.AbstractRestService;
+import com.siemens.bt.jazz.services.base.rest.RestRequest;
 import org.apache.commons.logging.Log;
 
 import javax.servlet.http.HttpServletRequest;

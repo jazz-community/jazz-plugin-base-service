@@ -1,4 +1,4 @@
-package com.siemens.bt.jazz.services.base.test.rest;
+package com.siemens.bt.jazz.services.base.rest;
 
 import com.ibm.team.repository.service.TeamRawService;
 import org.apache.commons.logging.Log;

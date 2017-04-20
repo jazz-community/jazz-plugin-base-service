@@ -1,7 +1,7 @@
-package com.siemens.bt.jazz.services.base.test.router.tree;
+package com.siemens.bt.jazz.services.base.router.tree;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
-import com.siemens.bt.jazz.services.base.test.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
 
 import java.util.HashMap;
 import java.util.Map;

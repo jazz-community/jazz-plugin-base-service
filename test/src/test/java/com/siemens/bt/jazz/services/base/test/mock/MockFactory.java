@@ -1,8 +1,8 @@
 package com.siemens.bt.jazz.services.base.test.mock;
 
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
-import com.siemens.bt.jazz.services.base.test.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.test.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
+import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
 
 public class MockFactory implements ServiceFactory {
     @Override
