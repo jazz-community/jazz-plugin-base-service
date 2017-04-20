@@ -23,6 +23,21 @@ public class RouterTest {
     private Router router;
 
     @Test
+    public void ServicePath_NotExists() throws Exception {
+        RestActionBuilder builder = router.prepareAction(
+                new MockTeamService(),
+                null,
+                new MockRequest(),
+                new MockResponse(),
+                new RestRequest(HttpConstants.HttpMethod.GET, "test_path")
+        );
+
+        RestAction action = builder.create();
+
+        assertSame(action.getClass(), DefaultRestService.class);
+    }
+
+    @Test
     public void ServicePath_Exists() throws Exception {
         MockFactory mockFactory = new MockFactory();
 
@@ -42,6 +57,7 @@ public class RouterTest {
         RestAction restAction = builder.create();
 
         assertSame(restAction.getClass(), TestService.class);
+        restAction.execute();
     }
 
     @Before
