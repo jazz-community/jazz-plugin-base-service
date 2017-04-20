@@ -1,6 +1,8 @@
 package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
+import com.siemens.bt.jazz.services.base.rest.RestAction;
+import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
 import com.siemens.bt.jazz.services.base.test.mock.MockRequest;
 import com.siemens.bt.jazz.services.base.test.mock.MockResponse;
@@ -13,6 +15,8 @@ import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
 import com.siemens.bt.jazz.services.base.router.tree.ConcurrentTreeRouter;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class RouterTest {
 
@@ -34,6 +38,10 @@ public class RouterTest {
                 mockRequest,
                 mockResponse,
                 restRequest);
+
+        RestAction restAction = builder.create();
+
+        assertSame(restAction.getClass(), TestService.class);
     }
 
     @Before
