@@ -1,4 +1,4 @@
-package com.siemens.bt.jazz.services.base.rest;
+package com.siemens.bt.jazz.services.base.test.rest;
 
 
 /**

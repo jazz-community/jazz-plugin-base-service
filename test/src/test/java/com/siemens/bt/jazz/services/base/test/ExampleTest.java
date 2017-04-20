@@ -1,9 +1,6 @@
-package com.siemens.bt.jazz.services.base;
+package com.siemens.bt.jazz.services.base.test;
 
 import org.junit.Test;
-import org.junit.runners.Parameterized;
-
-import java.util.Collection;
 
 import static org.junit.Assert.*;
 

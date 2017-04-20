@@ -1,12 +1,12 @@
-package com.siemens.bt.jazz.services.base.router.tree;
+package com.siemens.bt.jazz.services.base.test.router.tree;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
-import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.RestRequest;
-import com.siemens.bt.jazz.services.base.router.Router;
-import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.test.rest.RestActionBuilder;
+import com.siemens.bt.jazz.services.base.test.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.test.router.Router;
+import com.siemens.bt.jazz.services.base.test.router.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

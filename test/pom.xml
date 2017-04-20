@@ -18,6 +18,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.siemens.bt.jazz.services.base</groupId>
+            <artifactId>com.siemens.bt.jazz.services.base</artifactId>
+            <version>1.0.2-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

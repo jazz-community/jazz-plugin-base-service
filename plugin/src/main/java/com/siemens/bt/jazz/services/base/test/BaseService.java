@@ -1,13 +1,16 @@
-package com.siemens.bt.jazz.services.base;
+package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
-import com.siemens.bt.jazz.services.base.rest.*;
-import com.siemens.bt.jazz.services.base.router.tree.ConcurrentTreeRouter;
-import com.siemens.bt.jazz.services.base.router.Router;
-import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
-import com.siemens.bt.jazz.services.base.router.factory.RestFactoryPrototype;
-import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.test.rest.DefaultRestService;
+import com.siemens.bt.jazz.services.base.test.rest.RestAction;
+import com.siemens.bt.jazz.services.base.test.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.test.router.tree.ConcurrentTreeRouter;
+import com.siemens.bt.jazz.services.base.test.router.Router;
+import com.siemens.bt.jazz.services.base.test.router.factory.RestFactory;
+import com.siemens.bt.jazz.services.base.test.router.factory.RestFactoryPrototype;
+import com.siemens.bt.jazz.services.base.test.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.test.rest.RestActionBuilder;
 
 import java.io.IOException;
 

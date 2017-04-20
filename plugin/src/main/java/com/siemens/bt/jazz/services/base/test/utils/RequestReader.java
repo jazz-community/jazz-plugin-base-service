@@ -1,4 +1,4 @@
-package com.siemens.bt.jazz.services.base.utils;
+package com.siemens.bt.jazz.services.base.test.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

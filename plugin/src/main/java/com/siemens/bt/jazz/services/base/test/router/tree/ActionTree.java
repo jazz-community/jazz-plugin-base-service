@@ -1,8 +1,8 @@
-package com.siemens.bt.jazz.services.base.router.tree;
+package com.siemens.bt.jazz.services.base.test.router.tree;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
-import com.siemens.bt.jazz.services.base.rest.RestRequest;
-import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.test.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.test.router.factory.ServiceFactory;
 
 
 /**
