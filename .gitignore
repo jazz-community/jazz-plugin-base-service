@@ -21,3 +21,6 @@ convert_RTC_SDK_to_p2_repo.bat
 .idea
 *.iml
 target/
+
+# artifactory fix until we can deploy to maven central
+distribution_management_artifactory.txt
