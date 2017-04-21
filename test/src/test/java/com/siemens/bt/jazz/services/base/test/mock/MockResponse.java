@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.Locale;
 
 public class MockResponse implements HttpServletResponse {
