@@ -36,7 +36,7 @@ public class RequestReader {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
                         request.getInputStream()));
-        //BufferedReader reader = request.getReader();
+
         StringBuilder builder = new StringBuilder(request.getContentLength());
 
         for (String line = reader.readLine(); line != null; line = reader.readLine()) {

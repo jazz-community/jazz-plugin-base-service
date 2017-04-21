@@ -5,6 +5,7 @@ import com.siemens.bt.jazz.services.base.rest.AbstractRestService;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 import com.siemens.bt.jazz.services.base.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockRequest;
@@ -30,7 +31,7 @@ public class RestActionBuilderTest {
         // need references to all these objects for checking injection later
         TestLogger log = new TestLogger();
         MockTeamService mockParent = new MockTeamService();
-        MockRequest mockRequest = new MockRequest("GET");
+        MockRequest mockRequest = MockRequestFactory.httpGetRequest();
         MockResponse mockResponse = new MockResponse();
         RestRequest restRequest = new RestRequest(HttpConstants.HttpMethod.GET, "doesn't matter");
 
@@ -53,7 +54,7 @@ public class RestActionBuilderTest {
         for (Field field : fields) {
             field.setAccessible(true);
             Object object = field.get(service);
-            assertFalse(object == null);
+            assertNotNull(object);
         }
 
         // check for correct injection of AbstractRestService fields

@@ -1,13 +1,17 @@
 package com.siemens.bt.jazz.services.base.test.mock;
 
+import com.siemens.bt.jazz.services.base.test.helper.TestInputStream;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.util.Enumeration;
 import java.util.Locale;
@@ -15,9 +19,15 @@ import java.util.Map;
 
 public class MockRequest implements HttpServletRequest {
     private final String method;
+    private final String body;
+
+    public MockRequest(String method, String body) {
+        this.method = method;
+        this.body = body;
+    }
 
     public MockRequest(String method) {
-        this.method = method;
+        this(method, null);
     }
 
     @Override
@@ -167,7 +177,7 @@ public class MockRequest implements HttpServletRequest {
 
     @Override
     public int getContentLength() {
-        throw new RuntimeException("Not implemented in Mock.");
+        return body.length();
     }
 
     @Override
@@ -177,7 +187,7 @@ public class MockRequest implements HttpServletRequest {
 
     @Override
     public ServletInputStream getInputStream() throws IOException {
-        throw new RuntimeException("Not implemented in Mock.");
+        return new TestInputStream(this.body);
     }
 
     @Override

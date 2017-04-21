@@ -2,7 +2,7 @@ package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
-import com.siemens.bt.jazz.services.base.test.helper.RequestFactory;
+import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
@@ -40,7 +40,7 @@ public class RouterTest {
         RestActionBuilder builder = router.prepareAction(
                 new MockTeamService(),
                 new TestLogger(),
-                RequestFactory.httpGetRequest(),
+                MockRequestFactory.httpGetRequest(),
                 response,
                 new RestRequest(HttpConstants.HttpMethod.GET, "no_service_here")
         );
@@ -62,7 +62,7 @@ public class RouterTest {
         RestActionBuilder builder = router.prepareAction(
                 new MockTeamService(),
                 new TestLogger(),
-                RequestFactory.httpGetRequest(),
+                MockRequestFactory.httpGetRequest(),
                 new MockResponse(),
                 new RestRequest(HttpConstants.HttpMethod.GET, "test/service/path")
         );
