@@ -2,6 +2,7 @@ package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
+import com.siemens.bt.jazz.services.base.test.helper.RequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
@@ -30,11 +31,13 @@ public class RouterTest {
 
     @Test
     public void ServicePath_NotExists() throws Exception {
+        MockResponse response = new MockResponse();
+
         RestActionBuilder builder = router.prepareAction(
                 new MockTeamService(),
                 new TestLogger(),
-                new MockRequest(),
-                new MockResponse(),
+                RequestFactory.httpGetRequest(),
+                response,
                 new RestRequest(HttpConstants.HttpMethod.GET, "no_service_here")
         );
 
@@ -42,9 +45,10 @@ public class RouterTest {
 
         // Because no service has been added at the requested endpoint, the default service will just be returned.
         assertSame(action.getClass(), DefaultRestService.class);
+        action.execute();
 
-        // executing the default service will fail because not enough of the mock functionality has been implemented.
-//        action.execute();
+        String responseMessage = response.getMockWriter().toString();
+        assertEquals("The requested service \"no_service_here\" doesn't exist for method \"GET\".", responseMessage);
     }
 
     @Test
@@ -56,7 +60,7 @@ public class RouterTest {
         RestActionBuilder builder = router.prepareAction(
                 new MockTeamService(),
                 new TestLogger(),
-                new MockRequest(),
+                RequestFactory.httpGetRequest(),
                 new MockResponse(),
                 new RestRequest(HttpConstants.HttpMethod.GET, "test/service/path")
         );

@@ -3,168 +3,180 @@ package com.siemens.bt.jazz.services.base.test.mock;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.Locale;
 
 public class MockResponse implements HttpServletResponse {
+    private final CharArrayWriter charArrayWriter = new CharArrayWriter();
+    private final PrintWriter writer =  new PrintWriter(charArrayWriter);
+    private int status;
+    private String encoding;
+    private String contentType;
+
     @Override
     public void addCookie(Cookie cookie) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean containsHeader(String s) {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String encodeURL(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String encodeRedirectURL(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String encodeUrl(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String encodeRedirectUrl(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void sendError(int i, String s) throws IOException {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void sendError(int i) throws IOException {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void sendRedirect(String s) throws IOException {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void setDateHeader(String s, long l) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void addDateHeader(String s, long l) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void setHeader(String s, String s1) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void addHeader(String s, String s1) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void setIntHeader(String s, int i) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void addIntHeader(String s, int i) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
-    public void setStatus(int i) {
-
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
     public void setStatus(int i, String s) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getCharacterEncoding() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getContentType() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public ServletOutputStream getOutputStream() throws IOException {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public PrintWriter getWriter() throws IOException {
-        return null;
+        return writer;
     }
 
     @Override
-    public void setCharacterEncoding(String s) {
-
+    public void setCharacterEncoding(String encoding) {
+        this.encoding = encoding;
     }
 
     @Override
     public void setContentLength(int i) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
-    public void setContentType(String s) {
-
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     @Override
     public void setBufferSize(int i) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public int getBufferSize() {
-        return 0;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void flushBuffer() throws IOException {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void resetBuffer() {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean isCommitted() {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void reset() {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void setLocale(Locale locale) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Locale getLocale() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    public CharArrayWriter getMockWriter() {
+        return this.charArrayWriter;
     }
 }

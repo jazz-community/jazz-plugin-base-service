@@ -14,273 +14,279 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MockRequest implements HttpServletRequest {
+    private final String method;
+
+    public MockRequest(String method) {
+        this.method = method;
+    }
+
     @Override
     public String getAuthType() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Cookie[] getCookies() {
-        return new Cookie[0];
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public long getDateHeader(String s) {
-        return 0;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getHeader(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Enumeration getHeaders(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Enumeration getHeaderNames() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public int getIntHeader(String s) {
-        return 0;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getMethod() {
-        return null;
+        return this.method;
     }
 
     @Override
     public String getPathInfo() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getPathTranslated() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getContextPath() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getQueryString() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getRemoteUser() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean isUserInRole(String s) {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Principal getUserPrincipal() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getRequestedSessionId() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getRequestURI() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public StringBuffer getRequestURL() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getServletPath() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public HttpSession getSession(boolean b) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public HttpSession getSession() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean isRequestedSessionIdValid() {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean isRequestedSessionIdFromCookie() {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean isRequestedSessionIdFromURL() {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean isRequestedSessionIdFromUrl() {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Object getAttribute(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Enumeration getAttributeNames() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getCharacterEncoding() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void setCharacterEncoding(String s) throws UnsupportedEncodingException {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public int getContentLength() {
-        return 0;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getContentType() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public ServletInputStream getInputStream() throws IOException {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getParameter(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Enumeration getParameterNames() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String[] getParameterValues(String s) {
-        return new String[0];
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Map getParameterMap() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getProtocol() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getScheme() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getServerName() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public int getServerPort() {
-        return 0;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public BufferedReader getReader() throws IOException {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getRemoteAddr() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getRemoteHost() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void setAttribute(String s, Object o) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public void removeAttribute(String s) {
-
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Locale getLocale() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public Enumeration getLocales() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public boolean isSecure() {
-        return false;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public RequestDispatcher getRequestDispatcher(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getRealPath(String s) {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public int getRemotePort() {
-        return 0;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getLocalName() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public String getLocalAddr() {
-        return null;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
     public int getLocalPort() {
-        return 0;
+        throw new RuntimeException("Not implemented in Mock.");
     }
 }
