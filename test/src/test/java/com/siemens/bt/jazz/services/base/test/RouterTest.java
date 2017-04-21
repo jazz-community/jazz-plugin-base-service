@@ -6,7 +6,6 @@ import com.siemens.bt.jazz.services.base.test.helper.RequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
-import com.siemens.bt.jazz.services.base.test.mock.MockRequest;
 import com.siemens.bt.jazz.services.base.test.mock.MockResponse;
 import com.siemens.bt.jazz.services.base.test.mock.MockTeamService;
 import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
@@ -30,6 +29,11 @@ public class RouterTest {
     private Router router;
 
     @Test
+    public void ServicePath_Exists_WithParameters() throws Exception {
+        // this test will need to check that paths with parameters are passed correctly.
+    }
+
+    @Test
     public void ServicePath_NotExists() throws Exception {
         MockResponse response = new MockResponse();
 
@@ -45,10 +49,9 @@ public class RouterTest {
 
         // Because no service has been added at the requested endpoint, the default service will just be returned.
         assertSame(action.getClass(), DefaultRestService.class);
+        // Action executed here will have no side-effects, so we can just let it run.
         action.execute();
 
-        String responseMessage = response.getMockWriter().toString();
-        assertEquals("The requested service \"no_service_here\" doesn't exist for method \"GET\".", responseMessage);
     }
 
     @Test

@@ -179,4 +179,8 @@ public class MockResponse implements HttpServletResponse {
     public CharArrayWriter getMockWriter() {
         return this.charArrayWriter;
     }
+
+    public int getStatus() {
+        return this.status;
+    }
 }
