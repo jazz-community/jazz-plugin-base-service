@@ -2,6 +2,7 @@ package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
+import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
 import com.siemens.bt.jazz.services.base.test.mock.MockRequest;
@@ -31,38 +32,40 @@ public class RouterTest {
     public void ServicePath_NotExists() throws Exception {
         RestActionBuilder builder = router.prepareAction(
                 new MockTeamService(),
-                null,
+                new TestLogger(),
                 new MockRequest(),
                 new MockResponse(),
-                new RestRequest(HttpConstants.HttpMethod.GET, "test_path")
+                new RestRequest(HttpConstants.HttpMethod.GET, "no_service_here")
         );
 
         RestAction action = builder.create();
 
+        // Because no service has been added at the requested endpoint, the default service will just be returned.
         assertSame(action.getClass(), DefaultRestService.class);
+
+        // executing the default service will fail because not enough of the mock functionality has been implemented.
     }
 
     @Test
     public void ServicePath_Exists() throws Exception {
         MockFactory mockFactory = new MockFactory();
 
-        router.addService(HttpConstants.HttpMethod.GET, "test_path", mockFactory);
-        MockTeamService mockTeamService = new MockTeamService();
-        MockRequest mockRequest = new MockRequest();
-        MockResponse mockResponse = new MockResponse();
-        RestRequest restRequest = new RestRequest(HttpConstants.HttpMethod.GET, "test_path");
+        router.addService(HttpConstants.HttpMethod.GET, "test/service/path", mockFactory);
 
         RestActionBuilder builder = router.prepareAction(
-                mockTeamService,
-                null,
-                mockRequest,
-                mockResponse,
-                restRequest);
+                new MockTeamService(),
+                new TestLogger(),
+                new MockRequest(),
+                new MockResponse(),
+                new RestRequest(HttpConstants.HttpMethod.GET, "test/service/path")
+        );
 
-        RestAction restAction = builder.create();
+        RestAction action = builder.create();
 
-        assertSame(restAction.getClass(), TestService.class);
-        restAction.execute();
+        assertSame(action.getClass(), TestService.class);
+        // action should execute without exceptions because it doesn't interact with anything anyway. The mock service
+        // does nothing.
+        action.execute();
     }
 
     @Before
