@@ -109,6 +109,5 @@ public class RestActionBuilder {
                         TeamRawService.class);
 
         return constructor.newInstance(log, request, response, restRequest, parentService);
-
     }
 }

@@ -51,7 +51,6 @@ public class RouterTest {
         assertSame(action.getClass(), DefaultRestService.class);
         // Action executed here will have no side-effects, so we can just let it run.
         action.execute();
-
     }
 
     @Test
