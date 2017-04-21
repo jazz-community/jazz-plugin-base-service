@@ -13,20 +13,23 @@ import java.io.InputStreamReader;
 
 /**
  * Functions for consistently reading the HTTP body of all HttpServletRequests.
+ *
  * <p>
- * <p>This class is necessary because not every version / combination of jazz and java ee offer the same reproducible
- * behavior when reading from the request with the offered methods. These functions wrap the buffered and unbuffered
- * functionalities for easy use.</p>
+ *  This class is necessary because not every version / combination of jazz and java ee offer the same reproducible
+ *  behavior when reading from the request with the offered methods. These functions wrap the buffered and unbuffered
+ *  functionalities for easy use.
+ * </p>
  */
 public class RequestReader {
 
     /**
      * Reads the body of a request as a plain string.
      * <p>
-     * <p>This function is buffered using the built-in buffering. This is sufficient and scales well independently of
-     * input. Check <a href="http://recursor.blogspot.ch/2006/09/bufferedreader-vs-inputstream.html">this blog post</a>
-     * for more information. That should be more than sufficient for us. In addition, using the buffered functionality
-     * already takes care of the charset that is used for the request (compare this function to readUnbuffered).</p>
+     *  This function is buffered using the built-in buffering. This is sufficient and scales well independently of
+     *  input. Check <a href="http://recursor.blogspot.ch/2006/09/bufferedreader-vs-inputstream.html">this blog post</a>
+     *  for more information. That should be more than sufficient for us. In addition, using the buffered functionality
+     *  already takes care of the charset that is used for the request (compare this function to readUnbuffered).
+     * </p>
      *
      * @param request Request of which to read body
      * @return Content of request as string
@@ -48,9 +51,11 @@ public class RequestReader {
 
     /**
      * Reads the body of a request and parses it as JSON.
+     *
      * <p>
-     * <p>The caller of this function is responsible for handling any parsing errors should invalid JSON be in a
-     * request.</p>
+     *  The caller of this function is responsible for handling any parsing errors should invalid JSON be in a
+     *  request.
+     * </p>
      *
      * @param request Request of which to parse body
      * @return Content of request parsed as JSON
@@ -63,9 +68,11 @@ public class RequestReader {
 
     /**
      * Reads the body of a request and parses it as a JSON array.
+     *
      * <p>
-     * <p>The caller of this function is responsible for handling any parsing errors and making sure that this function
-     * is called on a request actually containing a JSON-array.</p>
+     *  The caller of this function is responsible for handling any parsing errors and making sure that this function
+     *  is called on a request actually containing a JSON-array.
+     * </p>
      *
      * @param request Request of which to parse body
      * @return Content of request parsed as a JSON array
@@ -78,11 +85,13 @@ public class RequestReader {
 
     /**
      * This function is only for demonstration purposes, don't use it in production code.
+     *
      * <p>
-     * <p>This serves the purpose of showing the underlying logic that the buffered version uses. This parses the
-     * content byte-wise. It doesn't, however, accommodate large request bodies and would likely start to fail at
-     * multiple large requests. To circumvent this, a fixed size buffer and a StringBuilder would have to be used,
-     * parsing the String once the buffer is full. Too much work for our scenario.</p>
+     *  This serves the purpose of showing the underlying logic that the buffered version uses. This parses the
+     *  content byte-wise. It doesn't, however, accommodate large request bodies and would likely start to fail at
+     *  multiple large requests. To circumvent this, a fixed size buffer and a StringBuilder would have to be used,
+     *  parsing the String once the buffer is full. Too much work for our scenario.
+     * </p>
      *
      * @param request Request of which to read body
      * @return Content of request as a string
