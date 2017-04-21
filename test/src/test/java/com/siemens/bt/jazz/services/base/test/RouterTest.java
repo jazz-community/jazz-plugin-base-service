@@ -44,6 +44,7 @@ public class RouterTest {
         assertSame(action.getClass(), DefaultRestService.class);
 
         // executing the default service will fail because not enough of the mock functionality has been implemented.
+//        action.execute();
     }
 
     @Test
