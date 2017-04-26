@@ -29,6 +29,24 @@ public class RouterTest {
     private Router router;
 
     @Test
+    public void ServicePath_Root() throws Exception {
+        router.addService(HttpConstants.HttpMethod.GET, "", new MockFactory());
+
+        MockResponse response = new MockResponse();
+
+        RestActionBuilder builder = router.prepareAction(
+                new MockTeamService(),
+                new TestLogger(),
+                MockRequestFactory.httpGetRequest(),
+                response,
+                new RestRequest(HttpConstants.HttpMethod.GET, "")
+        );
+
+        RestAction action = builder.create();
+        assertEquals(action.getClass(), TestService.class);
+    }
+
+    @Test
     public void ServicePath_Exists_WithParameters() throws Exception {
         // this test will need to check that paths with parameters are passed correctly.
     }
