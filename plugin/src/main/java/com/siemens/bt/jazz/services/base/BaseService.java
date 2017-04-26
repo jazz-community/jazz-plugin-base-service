@@ -8,7 +8,6 @@ import com.siemens.bt.jazz.services.base.rest.RestRequest;
 import com.siemens.bt.jazz.services.base.router.tree.ConcurrentTreeRouter;
 import com.siemens.bt.jazz.services.base.router.Router;
 import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
-import com.siemens.bt.jazz.services.base.router.factory.RestFactoryPrototype;
 import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 
@@ -20,14 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Entry point for the ExampleService, called by the Jazz class loader.
  *
- * <p>This class must be implemented for enabling plugins to run inside Jazz. The implemented interface corresponds to
- * the component in {@code plugin.xml}, and this service is therefore the provided service by the interface.</p>
+ * <p>
+ *  This class must be implemented for enabling plugins to run inside Jazz. The implemented interface corresponds to
+ *  the component in {@code plugin.xml}, and this service is therefore the provided service by the interface.
+ * </p>
  *
  */
 public abstract class BaseService extends TeamRawService {
-    protected final RestFactoryPrototype factoryPrototype = new RestFactoryPrototype();
-	private final ServiceFactory defaultFactory =
-			new RestFactory(DefaultRestService.class);
+
+	private final ServiceFactory defaultFactory = new RestFactory(DefaultRestService.class);
 
 	protected final Router router = new ConcurrentTreeRouter(defaultFactory);
 
@@ -62,10 +62,10 @@ public abstract class BaseService extends TeamRawService {
 	 * Calls the requested method and handles errors.
 	 *
 	 * <p>
- *     With the current architecture, it's easier to have dummy public methods and handle them all with this single
-	 * function. Error handling in jazz is a bit special, and to guarantee that the service is functionally sound,
-	 * all errors except {@code 501} and {@code IOExceptions} should be handled internally. If not handled and logged,
-	 * a generic {@code 500} exception is returned with little help for debugging.
+	 *  With the current architecture, it's easier to have dummy public methods and handle them all with this single
+	 *  function. Error handling in jazz is a bit special, and to guarantee that the service is functionally sound,
+	 *  all errors except {@code 501} and {@code IOExceptions} should be handled internally. If not handled and logged,
+	 *  a generic {@code 500} exception is returned with little help for debugging.
 	 * </p>
 	 *
 	 * @param uri Relative URI to which the request was sent
