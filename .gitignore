@@ -24,3 +24,4 @@ target/
 
 # artifactory fix until we can deploy to maven central
 distribution_management_artifactory.txt
+readme.html

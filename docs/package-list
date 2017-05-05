@@ -1,0 +1,6 @@
+com.siemens.bt.jazz.services.base
+com.siemens.bt.jazz.services.base.rest
+com.siemens.bt.jazz.services.base.router
+com.siemens.bt.jazz.services.base.router.factory
+com.siemens.bt.jazz.services.base.router.tree
+com.siemens.bt.jazz.services.base.utils
