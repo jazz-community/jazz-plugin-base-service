@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Locale;
 
 public class MockResponse implements HttpServletResponse {
@@ -181,5 +182,20 @@ public class MockResponse implements HttpServletResponse {
 
     public int getStatus() {
         return this.status;
+    }
+
+    @Override
+    public String getHeader(String s) {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public Collection<String> getHeaders(String s) {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public Collection<String> getHeaderNames() {
+        throw new RuntimeException("Not implemented in Mock.");
     }
 }

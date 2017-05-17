@@ -2,17 +2,15 @@ package com.siemens.bt.jazz.services.base.test.mock;
 
 import com.siemens.bt.jazz.services.base.test.helper.TestInputStream;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.*;
+import javax.servlet.http.*;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
@@ -152,6 +150,33 @@ public class MockRequest implements HttpServletRequest {
 
     @Override
     public boolean isRequestedSessionIdFromUrl() {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public boolean authenticate(HttpServletResponse httpServletResponse) throws IOException, ServletException {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public void login(String s, String s1) throws ServletException {
+        throw new RuntimeException("Not implemented in Mock.");
+
+    }
+
+    @Override
+    public void logout() throws ServletException {
+
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public Collection<Part> getParts() throws IOException, ServletException {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public Part getPart(String s) throws IOException, ServletException {
         throw new RuntimeException("Not implemented in Mock.");
     }
 
@@ -297,6 +322,41 @@ public class MockRequest implements HttpServletRequest {
 
     @Override
     public int getLocalPort() {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public ServletContext getServletContext() {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public AsyncContext startAsync() throws IllegalStateException {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse) throws IllegalStateException {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public boolean isAsyncStarted() {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public boolean isAsyncSupported() {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public AsyncContext getAsyncContext() {
+        throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public DispatcherType getDispatcherType() {
         throw new RuntimeException("Not implemented in Mock.");
     }
 }
