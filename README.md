@@ -40,7 +40,7 @@ Exhaustive documentation can be found in the API documentation. `Clone` the repo
 * Any release should be tested exhaustively
 * When introducing breaking changes, make sure to create a new major version and a corresponding branch
 * Use the tycho-versions-plugin to keep version numbers consistent
-    `mvn org.eclipse.tycho:tycho-versions-plugin:set-version "-DnewVersion=1.0.0"`
+    `mvn org.eclipse.tycho:tycho-versions-plugin:set-version "-DnewVersion=1.0.0-SNAPSHOT"`
 * Generate (`mvn javadoc:javadoc`) and release javadoc in the `/docs` folder.
 
 ## Contributing
