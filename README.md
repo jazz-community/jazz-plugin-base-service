@@ -41,6 +41,7 @@ Exhaustive documentation can be found in the API documentation. `Clone` the repo
 * When introducing breaking changes, make sure to create a new major version and a corresponding branch
 * Use the tycho-versions-plugin to keep version numbers consistent
     `mvn org.eclipse.tycho:tycho-versions-plugin:set-version "-DnewVersion=1.0.0-SNAPSHOT"`
+* After changing version with the tycho-versions-plugin, make sure to change the MANIFEST.mf file in the test project to match the current release
 * Generate (`mvn javadoc:javadoc`) and release javadoc in the `/docs` folder.
 
 ## Contributing
