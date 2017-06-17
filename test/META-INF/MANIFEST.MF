@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.siemens.bt.jazz.services.base
 Bundle-SymbolicName: com.siemens.bt.jazz.services.base.test;singleton:=true
-Bundle-Version: 1.0.3.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Vendor: VENDOR
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: target/dependency/junit-4.12.jar,
