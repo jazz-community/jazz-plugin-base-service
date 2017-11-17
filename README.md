@@ -21,7 +21,7 @@ In order to inherit from the base service and have projects depend on it, you wi
 2. Run `mvn install` from inside the checked out repository.
 
 ### Running the tests
-The Base Service comes with it's own set of unit tests and is largely covered by them. The unit tests in this project are a good starting point to get an idea of how services can be tested using the provided mocks.
+The Base Service comes with its own set of unit tests and is largely covered by them. The unit tests in this project are a good starting point to get an idea of how services can be tested using the provided mocks.
 
 To run the tests, simply run `mvn integration-test` from the project root.
 
@@ -33,16 +33,6 @@ As mentioned, the best way to get started is having a look at the `ExampleServic
 
 ## Javadoc
 Exhaustive documentation can be found in the API documentation. `Clone` the repo and open `/docs/index.html`.
-
-## Preparing a release
-* Tag every new release
-* Every new feature **must** have unit tests
-* Any release should be tested exhaustively
-* When introducing breaking changes, make sure to create a new major version and a corresponding branch
-* Use the tycho-versions-plugin to keep version numbers consistent
-    `mvn org.eclipse.tycho:tycho-versions-plugin:set-version "-DnewVersion=1.0.0-SNAPSHOT"`
-* After changing version with the tycho-versions-plugin, make sure to change the MANIFEST.mf file in the test project to match the current release
-* Generate (`mvn javadoc:javadoc`) and release javadoc in the `/docs` folder.
 
 ## Contributing
 Please use the [Issue Tracker](https://github.com/jazz-community/rtc-absence-widget/issues) of this repository to report issues or suggest enhancements.
