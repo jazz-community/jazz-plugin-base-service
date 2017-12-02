@@ -35,7 +35,7 @@ As mentioned, the best way to get started is having a look at the `ExampleServic
 Exhaustive documentation can be found in the API documentation. `Clone` the repo and open `/docs/index.html`.
 
 ## Contributing
-Please use the [Issue Tracker](https://github.com/jazz-community/rtc-absence-widget/issues) of this repository to report issues or suggest enhancements.
+Please use the [Issue Tracker](https://github.com/jazz-community/jazz-plugin-base-service/issues) of this repository to report issues or suggest enhancements.
 
 For general contribution guidelines, please refer to [CONTRIBUTING.md](https://github.com/jazz-community/jazz-plugin-base-service/blob/master/CONTRIBUTING.md)
 
