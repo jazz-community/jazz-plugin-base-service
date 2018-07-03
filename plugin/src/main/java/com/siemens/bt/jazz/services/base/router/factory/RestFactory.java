@@ -5,13 +5,20 @@ import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 
 public class RestFactory implements ServiceFactory {
     protected final Class<? extends AbstractRestService> serviceClass;
+    protected final String path;
 
-    public RestFactory(Class<? extends AbstractRestService> serviceClass) {
+    public RestFactory(String path, Class<? extends AbstractRestService> serviceClass) {
         this.serviceClass = serviceClass;
+        this.path = path;
     }
 
     @Override
     public RestActionBuilder getBuilder() {
-        return new RestActionBuilder(serviceClass);
+        return new RestActionBuilder(path, serviceClass);
+    }
+
+    @Override
+    public String getPath() {
+        return path;
     }
 }

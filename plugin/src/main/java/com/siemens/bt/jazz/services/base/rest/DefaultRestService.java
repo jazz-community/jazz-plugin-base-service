@@ -23,8 +23,8 @@ import java.net.URISyntaxException;
  */
 public final class DefaultRestService extends AbstractRestService {
 
-    public DefaultRestService(Log log, HttpServletRequest request, HttpServletResponse response, RestRequest restRequest, TeamRawService parentService) {
-        super(log, request, response, restRequest, parentService);
+    public DefaultRestService(Log log, HttpServletRequest request, HttpServletResponse response, RestRequest restRequest, TeamRawService parentService, PathParameters pathParameters) {
+        super(log, request, response, restRequest, parentService, pathParameters);
     }
 
     /**

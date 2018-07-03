@@ -25,14 +25,15 @@ import java.lang.reflect.InvocationTargetException;
 public class RestActionBuilder {
 
     protected final Class<? extends AbstractRestService> serviceClass;
-
+    protected final String path;
     protected HttpServletRequest request;
     protected HttpServletResponse response;
     protected Log log;
     protected RestRequest restRequest;
     protected TeamRawService parentService;
 
-    public RestActionBuilder(Class<? extends AbstractRestService> serviceClass) {
+    public RestActionBuilder(String path, Class<? extends AbstractRestService> serviceClass) {
+        this.path = path;
         this.serviceClass = serviceClass;
     }
 
@@ -98,16 +99,25 @@ public class RestActionBuilder {
      *
      * @return A new RestAction instance
      */
-    public RestAction create()
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-
+    public RestAction create() throws
+            NoSuchMethodException,
+            IllegalAccessException,
+            InvocationTargetException,
+            InstantiationException {
         Constructor<? extends AbstractRestService> constructor =
                 serviceClass.getConstructor(Log.class,
                         HttpServletRequest.class,
                         HttpServletResponse.class,
                         RestRequest.class,
-                        TeamRawService.class);
+                        TeamRawService.class,
+                        PathParameters.class);
 
-        return constructor.newInstance(log, request, response, restRequest, parentService);
+        return constructor.newInstance(
+                log,
+                request,
+                response,
+                restRequest,
+                parentService,
+                new PathParameters(path, restRequest.toString()));
     }
 }
