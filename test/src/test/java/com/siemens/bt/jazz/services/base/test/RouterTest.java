@@ -1,23 +1,23 @@
 package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
+import com.siemens.bt.jazz.services.base.rest.service.DefaultRestService;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
+import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
+import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
+import com.siemens.bt.jazz.services.base.router.map.MapRouter;
+import com.siemens.bt.jazz.services.base.router.Router;
 import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
 import com.siemens.bt.jazz.services.base.test.mock.MockResponse;
 import com.siemens.bt.jazz.services.base.test.mock.MockTeamService;
-import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
-import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.RestRequest;
-import com.siemens.bt.jazz.services.base.router.Router;
-import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
-import com.siemens.bt.jazz.services.base.router.tree.ConcurrentTreeRouter;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 /**
  * This implicitly tests the functionality of ActionTree. ActionNode is only a container class and need not be tested
@@ -30,7 +30,7 @@ public class RouterTest {
 
     @Test
     public void ServicePath_Root() throws Exception {
-        router.addService(HttpConstants.HttpMethod.GET, "", new MockFactory());
+        router.addService(HttpConstants.HttpMethod.GET, new MockFactory());
 
         MockResponse response = new MockResponse();
 
@@ -39,11 +39,11 @@ public class RouterTest {
                 new TestLogger(),
                 MockRequestFactory.httpGetRequest(),
                 response,
-                new RestRequest(HttpConstants.HttpMethod.GET, "")
+                new RestRequest(HttpConstants.HttpMethod.GET, "/")
         );
 
         RestAction action = builder.create();
-        assertEquals(action.getClass(), TestService.class);
+        assertEquals(TestService.class, action.getClass());
     }
 
     @Test
@@ -66,28 +66,27 @@ public class RouterTest {
         RestAction action = builder.create();
 
         // Because no service has been added at the requested endpoint, the default service will just be returned.
-        assertSame(action.getClass(), DefaultRestService.class);
+        assertSame(DefaultRestService.class, action.getClass());
         // Action executed here will have no side-effects, so we can just let it run.
         action.execute();
     }
 
     @Test
     public void ServicePath_Exists() throws Exception {
-        MockFactory mockFactory = new MockFactory();
+        MockFactory mockFactory = new MockFactory("test/service/path");
 
-        router.addService(HttpConstants.HttpMethod.GET, "test/service/path", mockFactory);
+        router.addService(HttpConstants.HttpMethod.GET, mockFactory);
 
         RestActionBuilder builder = router.prepareAction(
                 new MockTeamService(),
                 new TestLogger(),
                 MockRequestFactory.httpGetRequest(),
                 new MockResponse(),
-                new RestRequest(HttpConstants.HttpMethod.GET, "test/service/path")
-        );
+                new RestRequest(HttpConstants.HttpMethod.GET, "test/service/path"));
 
         RestAction action = builder.create();
 
-        assertSame(action.getClass(), TestService.class);
+        assertSame(TestService.class, action.getClass());
         // action should execute without exceptions because it doesn't interact with anything anyway. The mock service
         // does nothing.
         action.execute();
@@ -95,7 +94,6 @@ public class RouterTest {
 
     @Before
     public void setUp() throws Exception {
-        RestFactory restFactory = new RestFactory(DefaultRestService.class);
-        this.router = new ConcurrentTreeRouter(restFactory);
+        this.router = new MapRouter();
     }
 }

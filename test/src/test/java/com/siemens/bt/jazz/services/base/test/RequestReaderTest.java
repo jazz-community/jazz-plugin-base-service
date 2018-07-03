@@ -8,7 +8,8 @@ import com.siemens.bt.jazz.services.base.test.mock.MockRequest;
 import com.siemens.bt.jazz.services.base.utils.RequestReader;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class RequestReaderTest {
     @Test

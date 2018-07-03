@@ -1,6 +1,9 @@
 package com.siemens.bt.jazz.services.base.rest;
 
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
+import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
+import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import org.apache.commons.logging.Log;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,27 +15,30 @@ import java.lang.reflect.InvocationTargetException;
  * Abstract class for implementing the builder pattern for RestActions.
  *
  * <p>
- *  Classes that extend this class have access to all the possible resources they might need. However, only the
- *  required resources can be passed into internal classes to keep them sanitized.
+ * Classes that extend this class have access to all the possible resources they might need. However, only the
+ * required resources can be passed into internal classes to keep them sanitized.
  * </p>
  *
  * <p>
- *  All implementations return an instance of an inner private class with the intended functionality. Classes extending
- *  RestActionBuilder are therefore only wrappers for creating instances of actions. This is done for keeping the scope
- *  of all the builder variables as tight as possible.
+ * All implementations return an instance of an inner private class with the intended functionality. Classes extending
+ * RestActionBuilder are therefore only wrappers for creating instances of actions. This is done for keeping the scope
+ * of all the builder variables as tight as possible.
  * </p>
  */
 public class RestActionBuilder {
 
     protected final Class<? extends AbstractRestService> serviceClass;
-
+    protected final String path;
     protected HttpServletRequest request;
     protected HttpServletResponse response;
     protected Log log;
     protected RestRequest restRequest;
     protected TeamRawService parentService;
 
-    public RestActionBuilder(Class<? extends AbstractRestService> serviceClass) {
+    public RestActionBuilder(
+            String path,
+            Class<? extends AbstractRestService> serviceClass) {
+        this.path = path;
         this.serviceClass = serviceClass;
     }
 
@@ -82,7 +88,6 @@ public class RestActionBuilder {
 
     /**
      * Set a TeamRawService.
-     * <p>
      * <p>This is necessary for services that reflect upon the form of the service itself.</p>
      *
      * @param parentService The service calling the request.
@@ -98,16 +103,25 @@ public class RestActionBuilder {
      *
      * @return A new RestAction instance
      */
-    public RestAction create()
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-
+    public RestAction create() throws
+            NoSuchMethodException,
+            IllegalAccessException,
+            InvocationTargetException,
+            InstantiationException {
         Constructor<? extends AbstractRestService> constructor =
                 serviceClass.getConstructor(Log.class,
                         HttpServletRequest.class,
                         HttpServletResponse.class,
                         RestRequest.class,
-                        TeamRawService.class);
+                        TeamRawService.class,
+                        PathParameters.class);
 
-        return constructor.newInstance(log, request, response, restRequest, parentService);
+        return constructor.newInstance(
+                log,
+                request,
+                response,
+                restRequest,
+                parentService,
+                new PathParameters(path, restRequest.toString()));
     }
 }
