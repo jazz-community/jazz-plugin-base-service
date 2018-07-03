@@ -34,7 +34,7 @@ public class ServiceMap {
             String path,
             ServiceFactory factory) {
 
-        String pattern = path + ".*";
+        String pattern = path;
 
         if (!services.containsKey(pattern)) {
             services.put(pattern, new HashMap<HttpConstants.HttpMethod, ServiceFactory>());
