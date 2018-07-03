@@ -15,13 +15,20 @@ public abstract class AbstractRestService implements RestAction {
     protected HttpServletResponse response;
     protected RestRequest restRequest;
     protected TeamRawService parentService;
+    protected PathParameters pathParameters;
 
-    public AbstractRestService(Log log, HttpServletRequest request, HttpServletResponse response, RestRequest restRequest, TeamRawService parentService) {
-        this.log = log;
+    public AbstractRestService(
+            Log log,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            RestRequest restRequest,
+            TeamRawService parentService,
+            PathParameters pathParameters) {
         this.log = log;
         this.request = request;
         this.response = response;
         this.restRequest = restRequest;
         this.parentService = parentService;
+        this.pathParameters = pathParameters;
     }
 }
