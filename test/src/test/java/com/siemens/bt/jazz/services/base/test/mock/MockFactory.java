@@ -7,6 +7,11 @@ import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
 public class MockFactory implements ServiceFactory {
     @Override
     public RestActionBuilder getBuilder() {
-        return new RestActionBuilder(TestService.class);
+        return new RestActionBuilder("/", TestService.class);
+    }
+
+    @Override
+    public String getPath() {
+        return "/";
     }
 }

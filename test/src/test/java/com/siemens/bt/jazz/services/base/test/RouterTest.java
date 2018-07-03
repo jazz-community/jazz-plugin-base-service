@@ -1,23 +1,24 @@
 package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
+import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
+import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
+import com.siemens.bt.jazz.services.base.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.router.MapRouter;
+import com.siemens.bt.jazz.services.base.router.Router;
+import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
 import com.siemens.bt.jazz.services.base.test.helper.TestService;
 import com.siemens.bt.jazz.services.base.test.mock.MockFactory;
 import com.siemens.bt.jazz.services.base.test.mock.MockResponse;
 import com.siemens.bt.jazz.services.base.test.mock.MockTeamService;
-import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
-import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.RestRequest;
-import com.siemens.bt.jazz.services.base.router.Router;
-import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
-import com.siemens.bt.jazz.services.base.router.tree.ConcurrentTreeRouter;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 /**
  * This implicitly tests the functionality of ActionTree. ActionNode is only a container class and need not be tested
@@ -30,7 +31,7 @@ public class RouterTest {
 
     @Test
     public void ServicePath_Root() throws Exception {
-        router.addService(HttpConstants.HttpMethod.GET, "", new MockFactory());
+        router.addService(HttpConstants.HttpMethod.GET, new MockFactory());
 
         MockResponse response = new MockResponse();
 
@@ -75,7 +76,7 @@ public class RouterTest {
     public void ServicePath_Exists() throws Exception {
         MockFactory mockFactory = new MockFactory();
 
-        router.addService(HttpConstants.HttpMethod.GET, "test/service/path", mockFactory);
+        router.addService(HttpConstants.HttpMethod.GET, mockFactory);
 
         RestActionBuilder builder = router.prepareAction(
                 new MockTeamService(),
@@ -95,7 +96,6 @@ public class RouterTest {
 
     @Before
     public void setUp() throws Exception {
-        RestFactory restFactory = new RestFactory(DefaultRestService.class);
-        this.router = new ConcurrentTreeRouter(restFactory);
+        this.router = new MapRouter();
     }
 }

@@ -2,6 +2,7 @@ package com.siemens.bt.jazz.services.base.test;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
+import com.siemens.bt.jazz.services.base.rest.PathParameters;
 import com.siemens.bt.jazz.services.base.rest.RestRequest;
 import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
@@ -32,8 +33,8 @@ public class DefaultServiceTest {
                 MockRequestFactory.httpGetRequest(),
                 mockResponse,
                 new RestRequest(HttpConstants.HttpMethod.GET, "get_default_service"),
-                new MockTeamService()
-        );
+                new MockTeamService(),
+                new PathParameters("", ""));
 
         service.execute();
 
