@@ -4,7 +4,7 @@ import org.apache.commons.logging.Log;
 
 import java.util.ArrayList;
 
-public class TestLogger implements Log{
+public class TestLogger implements Log {
     private ArrayList<String> messages = new ArrayList<>();
 
     @Override

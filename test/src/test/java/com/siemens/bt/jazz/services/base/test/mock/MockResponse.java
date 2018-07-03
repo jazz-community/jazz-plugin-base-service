@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class MockResponse implements HttpServletResponse {
     private final CharArrayWriter charArrayWriter = new CharArrayWriter();
-    private final PrintWriter writer =  new PrintWriter(charArrayWriter);
+    private final PrintWriter writer = new PrintWriter(charArrayWriter);
     private int status;
     private String encoding;
     private String contentType;
@@ -92,11 +92,6 @@ public class MockResponse implements HttpServletResponse {
     }
 
     @Override
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    @Override
     public void setStatus(int i, String s) {
         throw new RuntimeException("Not implemented in Mock.");
     }
@@ -107,8 +102,18 @@ public class MockResponse implements HttpServletResponse {
     }
 
     @Override
+    public void setCharacterEncoding(String encoding) {
+        this.encoding = encoding;
+    }
+
+    @Override
     public String getContentType() {
         throw new RuntimeException("Not implemented in Mock.");
+    }
+
+    @Override
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     @Override
@@ -122,27 +127,17 @@ public class MockResponse implements HttpServletResponse {
     }
 
     @Override
-    public void setCharacterEncoding(String encoding) {
-        this.encoding = encoding;
-    }
-
-    @Override
     public void setContentLength(int i) {
         throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    @Override
-    public void setBufferSize(int i) {
+    public int getBufferSize() {
         throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
-    public int getBufferSize() {
+    public void setBufferSize(int i) {
         throw new RuntimeException("Not implemented in Mock.");
     }
 
@@ -167,12 +162,12 @@ public class MockResponse implements HttpServletResponse {
     }
 
     @Override
-    public void setLocale(Locale locale) {
+    public Locale getLocale() {
         throw new RuntimeException("Not implemented in Mock.");
     }
 
     @Override
-    public Locale getLocale() {
+    public void setLocale(Locale locale) {
         throw new RuntimeException("Not implemented in Mock.");
     }
 
@@ -182,6 +177,11 @@ public class MockResponse implements HttpServletResponse {
 
     public int getStatus() {
         return this.status;
+    }
+
+    @Override
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
