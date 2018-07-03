@@ -2,6 +2,7 @@ package com.siemens.bt.jazz.services.base.router;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.rest.AbstractRestService;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 import com.siemens.bt.jazz.services.base.rest.RestRequest;
 import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
@@ -24,6 +25,16 @@ public interface Router {
      * @param factory Factory to use when building rest actions
      */
     void addService(HttpMethod method, String path, ServiceFactory factory);
+
+    void get(String path, Class<? extends AbstractRestService> service);
+    void put(String path, Class<? extends AbstractRestService> service);
+    void post(String path, Class<? extends AbstractRestService> service);
+    void delete(String path, Class<? extends AbstractRestService> service);
+
+    void get(ServiceFactory factory);
+    void put(ServiceFactory factory);
+    void post(ServiceFactory factory);
+    void delete(ServiceFactory factory);
 
     /**
      * Builds a rest action and returns it, complete for execution.
