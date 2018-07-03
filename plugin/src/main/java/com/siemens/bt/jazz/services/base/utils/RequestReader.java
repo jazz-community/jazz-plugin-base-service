@@ -36,9 +36,10 @@ public class RequestReader {
      * @throws IOException If input stream is invalid
      */
     public static String readAsString(HttpServletRequest request) throws IOException {
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(
-                        request.getInputStream()));
+        BufferedReader reader =
+                new BufferedReader(
+                        new InputStreamReader(
+                                request.getInputStream()));
 
         StringBuilder builder = new StringBuilder(request.getContentLength());
 
