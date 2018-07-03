@@ -8,9 +8,16 @@ import java.util.regex.Pattern;
 public class PathParameters {
     private final Map<String, String> parameters;
 
-
     public PathParameters(String path, String url) {
         this.parameters = makeMap(path, url);
+    }
+
+    public String get(String key) {
+        return parameters.get(key);
+    }
+
+    public Integer getAsInteger(String key) {
+        return Integer.parseInt(get(key));
     }
 
     private Map<String, String> makeMap(String path, String url) {
