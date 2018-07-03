@@ -31,7 +31,6 @@ public final class DefaultRestService extends AbstractRestService {
 
     /**
      * {@inheritDoc}.
-     * <p>
      * <p>Writes a message informing the user that this is an unimplemented service.</p>
      * <p>Returns 501 Not Implemented</p>
      */

@@ -3,7 +3,6 @@ package com.siemens.bt.jazz.services.base.rest;
 
 /**
  * <p>Interface for the command pattern of calling actions.</p>
- * <p>
  * <p>The command pattern is described with this name by the Gang of Four.</p>
  *
  * @see <a href="https://en.wikipedia.org/wiki/Command_pattern">Wikipedia: Command Pattern</a>

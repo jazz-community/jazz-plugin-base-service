@@ -88,7 +88,6 @@ public class RestActionBuilder {
 
     /**
      * Set a TeamRawService.
-     * <p>
      * <p>This is necessary for services that reflect upon the form of the service itself.</p>
      *
      * @param parentService The service calling the request.

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Handle REST URL routing to a service.
- * <p>
  * <p>This interface supplies methods that enable a client to look up a REST service implementation given a URI.</p>
  */
 public interface Router {
@@ -42,11 +41,12 @@ public interface Router {
     void delete(ServiceFactory factory);
 
     /**
-     * Builds a rest action and returns it, complete for execution.
-     *
-     * @param request     The original HTTP Request
-     * @param response    The response object for writing back responses to the client
-     * @param restRequest A summary of the HTTP request, mainly used for navigation
+     * Builds a rest action and returns it, complete for execution
+     * @param parentService The parent service of this service. Initially called in the chain
+     * @param log           Log object
+     * @param request       The original HTTP Request
+     * @param response      The response object for writing back responses to the client
+     * @param restRequest   A summary of the HTTP request, mainly used for navigation
      * @return A rest action that can be executed
      */
     RestActionBuilder prepareAction(

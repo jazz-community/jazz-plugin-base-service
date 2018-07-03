@@ -73,7 +73,6 @@ public final class RestRequest implements Iterable<String> {
 
     /**
      * Checks if there is a next path fragment of the current URL.
-     * <p>
      * <p>A path fragment is a part of a slash separated URL: {@code /these/are/fragments}
      * Required for navigating the path efficiently.</p>
      *
@@ -85,7 +84,6 @@ public final class RestRequest implements Iterable<String> {
 
     /**
      * Next path fragment of the URL, starting at the front of the URL; removes the fragment.
-     * <p>
      * <p>A path fragment is a part of a slash separated URL: {@code /these/are/fragments}
      * Required for navigating the path efficiently.</p>
      *
@@ -97,7 +95,6 @@ public final class RestRequest implements Iterable<String> {
 
     /**
      * Next path fragment, without removing it from the path.
-     * <p>
      * <p>This function is a candidate for removal in a future release.</p>
      *
      * @return The next path fragment
@@ -117,7 +114,6 @@ public final class RestRequest implements Iterable<String> {
 
     /**
      * String representation of the original request, returns the URL in standard format.
-     * <p>
      * {@inheritDoc}
      */
     @Override
@@ -127,7 +123,6 @@ public final class RestRequest implements Iterable<String> {
 
     /**
      * Iterator for looping over the rest-path.
-     * <p>
      * {@inheritDoc}
      */
     public Iterator<String> iterator() {
