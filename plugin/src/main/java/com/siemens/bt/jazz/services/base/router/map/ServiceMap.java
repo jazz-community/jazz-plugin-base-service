@@ -1,7 +1,7 @@
-package com.siemens.bt.jazz.services.base.router;
+package com.siemens.bt.jazz.services.base.router.map;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
-import com.siemens.bt.jazz.services.base.rest.DefaultRestService;
+import com.siemens.bt.jazz.services.base.rest.service.DefaultRestService;
 import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
 import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
 
@@ -15,7 +15,9 @@ public class ServiceMap {
 
     public ServiceFactory getFactory(HttpServletRequest request, String uri) {
         for (String path : services.keySet()) {
-            String regex = path.replaceAll("\\{[^\\/]+\\}", "([^\\/]+)");
+            String regex = path.replaceAll(
+                    "\\{[^\\/]+\\}",
+                    "([^\\/]+)");
             Pattern pattern = Pattern.compile(regex);
             if (pattern.matcher(uri).matches()) {
                 return services
@@ -24,10 +26,14 @@ public class ServiceMap {
             }
         }
 
-        return new RestFactory("", DefaultRestService.class);
+        return new RestFactory(uri, DefaultRestService.class);
     }
 
-    public void add(HttpConstants.HttpMethod method, String path, ServiceFactory factory) {
+    public void add(
+            HttpConstants.HttpMethod method,
+            String path,
+            ServiceFactory factory) {
+
         if (!services.containsKey(path)) {
             services.put(path, new HashMap<HttpConstants.HttpMethod, ServiceFactory>());
         }

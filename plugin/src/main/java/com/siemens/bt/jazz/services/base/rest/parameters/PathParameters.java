@@ -1,4 +1,4 @@
-package com.siemens.bt.jazz.services.base.rest;
+package com.siemens.bt.jazz.services.base.rest.parameters;
 
 import java.util.HashMap;
 import java.util.Map;

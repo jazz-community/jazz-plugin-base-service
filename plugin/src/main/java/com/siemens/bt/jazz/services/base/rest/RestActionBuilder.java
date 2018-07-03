@@ -1,6 +1,9 @@
 package com.siemens.bt.jazz.services.base.rest;
 
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
+import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
+import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import org.apache.commons.logging.Log;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +35,9 @@ public class RestActionBuilder {
     protected RestRequest restRequest;
     protected TeamRawService parentService;
 
-    public RestActionBuilder(String path, Class<? extends AbstractRestService> serviceClass) {
+    public RestActionBuilder(
+            String path,
+            Class<? extends AbstractRestService> serviceClass) {
         this.path = path;
         this.serviceClass = serviceClass;
     }

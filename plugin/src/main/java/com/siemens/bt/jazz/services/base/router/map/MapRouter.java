@@ -1,10 +1,11 @@
-package com.siemens.bt.jazz.services.base.router;
+package com.siemens.bt.jazz.services.base.router.map;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.ibm.team.repository.service.TeamRawService;
-import com.siemens.bt.jazz.services.base.rest.AbstractRestService;
+import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
+import com.siemens.bt.jazz.services.base.router.Router;
 import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
 import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
 import org.apache.commons.logging.Log;

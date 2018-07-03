@@ -1,6 +1,8 @@
-package com.siemens.bt.jazz.services.base.rest;
+package com.siemens.bt.jazz.services.base.rest.service;
 
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
+import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import org.apache.commons.logging.Log;
 
 import javax.servlet.http.HttpServletRequest;

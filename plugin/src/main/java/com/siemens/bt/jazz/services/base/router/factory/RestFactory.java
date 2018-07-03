@@ -1,6 +1,6 @@
 package com.siemens.bt.jazz.services.base.router.factory;
 
-import com.siemens.bt.jazz.services.base.rest.AbstractRestService;
+import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 
 public class RestFactory implements ServiceFactory {

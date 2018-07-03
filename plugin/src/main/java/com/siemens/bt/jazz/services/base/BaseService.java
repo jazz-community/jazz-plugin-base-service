@@ -4,8 +4,8 @@ import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.RestRequest;
-import com.siemens.bt.jazz.services.base.router.MapRouter;
+import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
+import com.siemens.bt.jazz.services.base.router.map.MapRouter;
 import com.siemens.bt.jazz.services.base.router.Router;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,7 +39,10 @@ public abstract class BaseService extends TeamRawService {
      * Called when a HTTP GET request is sent.
      */
     @Override
-    public void perform_GET(String uri, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void perform_GET(
+            String uri,
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
         performAction(uri, request, response);
     }
 
@@ -47,7 +50,32 @@ public abstract class BaseService extends TeamRawService {
      * Called when a HTTP POST request is sent.
      */
     @Override
-    public void perform_POST(String uri, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void perform_POST(
+            String uri,
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        performAction(uri, request, response);
+    }
+
+    /**
+     * Called when a HTTP PUT request is sent.
+     */
+    @Override
+    public void perform_PUT(
+            String uri,
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        performAction(uri, request, response);
+    }
+
+    /**
+     * Called when a HTTP PUT request is sent.
+     */
+    @Override
+    public void perform_DELETE(
+            String uri,
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
         performAction(uri, request, response);
     }
 
@@ -66,7 +94,10 @@ public abstract class BaseService extends TeamRawService {
      * @param response A wrapped IO Handler for responses
      * @throws IOException Only exception thrown back to Jazz, corresponding with the contract from the inherited method.
      */
-    protected void performAction(String uri, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void performAction(
+            String uri,
+            HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
         try {
             RestActionBuilder builder = prepareRequest(uri, request, response);
             RestAction action = builder.create();
@@ -82,9 +113,10 @@ public abstract class BaseService extends TeamRawService {
         }
     }
 
-    protected final RestActionBuilder prepareRequest(String uri,
-                                                     HttpServletRequest request,
-                                                     HttpServletResponse response) {
+    protected final RestActionBuilder prepareRequest(
+            String uri,
+            HttpServletRequest request,
+            HttpServletResponse response) {
         HttpMethod method = HttpMethod.fromString(request.getMethod());
         @SuppressWarnings("unchecked")
         RestRequest restRequest = new RestRequest(method, uri, request.getParameterMap());
