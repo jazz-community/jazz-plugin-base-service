@@ -12,14 +12,14 @@ import java.lang.reflect.InvocationTargetException;
  * Abstract class for implementing the builder pattern for RestActions.
  *
  * <p>
- *  Classes that extend this class have access to all the possible resources they might need. However, only the
- *  required resources can be passed into internal classes to keep them sanitized.
+ * Classes that extend this class have access to all the possible resources they might need. However, only the
+ * required resources can be passed into internal classes to keep them sanitized.
  * </p>
  *
  * <p>
- *  All implementations return an instance of an inner private class with the intended functionality. Classes extending
- *  RestActionBuilder are therefore only wrappers for creating instances of actions. This is done for keeping the scope
- *  of all the builder variables as tight as possible.
+ * All implementations return an instance of an inner private class with the intended functionality. Classes extending
+ * RestActionBuilder are therefore only wrappers for creating instances of actions. This is done for keeping the scope
+ * of all the builder variables as tight as possible.
  * </p>
  */
 public class RestActionBuilder {

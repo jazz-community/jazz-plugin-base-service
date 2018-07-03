@@ -7,11 +7,11 @@ import java.util.*;
 /**
  * Class for condensing the most frequently used request information sent to the service.
  * <p>
- *     Just a class that's easier to handle and cheap to build compared to HttServletRequest. Adds the path navigation
- *     facility required for efficient routing.
+ * Just a class that's easier to handle and cheap to build compared to HttServletRequest. Adds the path navigation
+ * facility required for efficient routing.
  * </p>
  * <p>
- *     All functions that handle parameters could be extracted to a separate RequestParameters class.
+ * All functions that handle parameters could be extracted to a separate RequestParameters class.
  * </p>
  */
 public final class RestRequest implements Iterable<String> {

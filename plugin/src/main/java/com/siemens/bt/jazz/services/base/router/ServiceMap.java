@@ -26,4 +26,12 @@ public class ServiceMap {
 
         return new RestFactory("", DefaultRestService.class);
     }
+
+    public void add(HttpConstants.HttpMethod method, String path, ServiceFactory factory) {
+        if (!services.containsKey(path)) {
+            services.put(path, new HashMap<HttpConstants.HttpMethod, ServiceFactory>());
+        }
+
+        services.get(path).put(method, factory);
+    }
 }

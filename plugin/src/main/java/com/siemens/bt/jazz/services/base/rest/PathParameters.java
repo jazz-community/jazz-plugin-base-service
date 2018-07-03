@@ -13,7 +13,7 @@ public class PathParameters {
         this.parameters = makeMap(path, url);
     }
 
-    private Map<String,String> makeMap(String path, String url) {
+    private Map<String, String> makeMap(String path, String url) {
         HashMap<String, String> parameters = new HashMap<>();
 
         String regex = path.replaceAll(

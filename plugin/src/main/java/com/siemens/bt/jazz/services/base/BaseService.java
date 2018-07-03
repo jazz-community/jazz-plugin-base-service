@@ -5,6 +5,7 @@ import com.ibm.team.repository.service.TeamRawService;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 import com.siemens.bt.jazz.services.base.rest.RestRequest;
+import com.siemens.bt.jazz.services.base.router.MapRouter;
 import com.siemens.bt.jazz.services.base.router.Router;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ import java.io.IOException;
  */
 public abstract class BaseService extends TeamRawService {
 
-    protected final Router router;
+    protected final Router router = new MapRouter();
 
     /**
      * Constructs a new ClearQuestService

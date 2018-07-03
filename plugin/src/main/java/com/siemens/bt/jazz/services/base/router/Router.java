@@ -21,19 +21,24 @@ public interface Router {
      * Adds a service with a method, a full URL path and a builder class.
      *
      * @param method  A REST method ({@code GET/POST/}etc.)
-     * @param path    A full path in standard url form {@code /like/this/please}
      * @param factory Factory to use when building rest actions
      */
-    void addService(HttpMethod method, String path, ServiceFactory factory);
+    void addService(HttpMethod method, ServiceFactory factory);
 
     void get(String path, Class<? extends AbstractRestService> service);
+
     void put(String path, Class<? extends AbstractRestService> service);
+
     void post(String path, Class<? extends AbstractRestService> service);
+
     void delete(String path, Class<? extends AbstractRestService> service);
 
     void get(ServiceFactory factory);
+
     void put(ServiceFactory factory);
+
     void post(ServiceFactory factory);
+
     void delete(ServiceFactory factory);
 
     /**
