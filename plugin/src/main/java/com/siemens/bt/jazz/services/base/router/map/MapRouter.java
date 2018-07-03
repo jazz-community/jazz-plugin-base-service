@@ -20,7 +20,7 @@ public class MapRouter implements Router {
     public void addService(
             HttpConstants.HttpMethod method,
             ServiceFactory factory) {
-        services.add(method, factory.getPath(), factory);
+        services.add(method, factory.getPath() + ".*", factory);
     }
 
     @Override
