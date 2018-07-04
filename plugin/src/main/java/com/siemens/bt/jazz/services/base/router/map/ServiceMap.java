@@ -33,13 +33,10 @@ public class ServiceMap {
             HttpConstants.HttpMethod method,
             String path,
             ServiceFactory factory) {
-
-        String pattern = path;
-
-        if (!services.containsKey(pattern)) {
-            services.put(pattern, new HashMap<HttpConstants.HttpMethod, ServiceFactory>());
+        if (!services.containsKey(path)) {
+            services.put(path, new HashMap<HttpConstants.HttpMethod, ServiceFactory>());
         }
 
-        services.get(pattern).put(method, factory);
+        services.get(path).put(method, factory);
     }
 }
