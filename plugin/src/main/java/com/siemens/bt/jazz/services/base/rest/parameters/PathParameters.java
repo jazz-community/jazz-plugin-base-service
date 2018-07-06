@@ -20,7 +20,7 @@ public class PathParameters {
         return Integer.parseInt(get(key));
     }
 
-    private Map<String, String> makeMap(String path, String url) {
+    private static Map<String, String> makeMap(String path, String url) {
         HashMap<String, String> parameters = new HashMap<>();
 
         String regex = path.replaceAll(
@@ -53,6 +53,4 @@ public class PathParameters {
 
         return parameters;
     }
-
-
 }

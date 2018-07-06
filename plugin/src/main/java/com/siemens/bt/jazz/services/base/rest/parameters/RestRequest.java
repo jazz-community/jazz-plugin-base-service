@@ -63,7 +63,7 @@ public final class RestRequest implements Iterable<String> {
      * @return Parameter value corresponding to key, null if it doesn't exist
      */
     public String getParameterValue(String key) {
-        // TODO: Oh jeez... This is just pure java-uglyness.
+        // This is a nice place for Optional
         if (this.parameters.size() > 0 && this.hasParameter(key)) {
             return this.parameters.get(key)[0];
         }

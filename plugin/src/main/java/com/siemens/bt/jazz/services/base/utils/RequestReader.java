@@ -22,6 +22,9 @@ import java.io.InputStreamReader;
  */
 public class RequestReader {
 
+    private RequestReader() {
+    }
+
     /**
      * Reads the body of a request as a plain string.
      * <p>

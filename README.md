@@ -1,3 +1,7 @@
+[![Code Metrics](https://sonarcloud.io/api/project_badges/measure?project=com.siemens.bt.jazz.services.base%3Acom.siemens.bt.jazz.services.base&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.siemens.bt.jazz.services.base%3Acom.siemens.bt.jazz.services.base)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=com.siemens.bt.jazz.services.base%3Acom.siemens.bt.jazz.services.base&metric=ncloc)](https://sonarcloud.io/dashboard?id=com.siemens.bt.jazz.services.base%3Acom.siemens.bt.jazz.services.base)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=com.siemens.bt.jazz.services.base%3Acom.siemens.bt.jazz.services.base&metric=bugs)](https://sonarcloud.io/dashboard?id=com.siemens.bt.jazz.services.base%3Acom.siemens.bt.jazz.services.base)
+
 # Jazz Plugin Base Service
 template which serves as the base class for plugin-based web services.
 
