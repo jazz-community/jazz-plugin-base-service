@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.siemens.bt.jazz.services.base</groupId>
         <artifactId>com.siemens.bt.jazz.services.base.parent</artifactId>
-        <version>3.0.1-SNAPSHOT</version>
+        <version>3.0.2-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.siemens.bt.jazz.services.base</groupId>
             <artifactId>com.siemens.bt.jazz.services.base</artifactId>
-            <version>3.0.1-SNAPSHOT</version>
+            <version>3.0.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
