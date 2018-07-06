@@ -31,10 +31,7 @@ public class ServiceMap {
         return new RestFactory(uri, DefaultRestService.class);
     }
 
-    public void add(
-            HttpMethod method,
-            String path,
-            ServiceFactory factory) {
+    public void add(HttpMethod method, String path, ServiceFactory factory) {
         if (!services.containsKey(path)) {
             services.put(
                     path,
