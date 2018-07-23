@@ -17,8 +17,9 @@ public class ServiceMap {
     for (Map.Entry<String, Map<HttpMethod, ServiceFactory>> entry : services.entrySet()) {
       String regex = entry.getKey().replaceAll("\\{[^\\/]+\\}", "([^\\/]+)");
       Pattern pattern = Pattern.compile(regex);
-      if (pattern.matcher(uri).matches()) {
-        return entry.getValue().get(HttpMethod.fromString(request.getMethod()));
+      HttpMethod method = HttpMethod.fromString(request.getMethod());
+      if (pattern.matcher(uri).matches() && entry.getValue().containsKey(method)) {
+        return entry.getValue().get(method);
       }
     }
 
