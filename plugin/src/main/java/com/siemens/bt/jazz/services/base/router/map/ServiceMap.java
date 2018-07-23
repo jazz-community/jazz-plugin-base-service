@@ -20,7 +20,7 @@ public class ServiceMap {
           entry
               .getKey()
               .replaceAll(
-                  PathRegex.PARAMETER_MATCH.toString(), PathRegex.PARAMETER_REPLACEMENT.toString());
+                  PathRegex.PARAMETER_MATCH.toString(), PathRegex.PARAMETER_GROUP.toString());
       Pattern pattern = Pattern.compile(regex);
       HttpMethod method = HttpMethod.fromString(request.getMethod());
       if (pattern.matcher(uri).matches() && entry.getValue().containsKey(method)) {

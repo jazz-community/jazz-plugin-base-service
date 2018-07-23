@@ -1,9 +1,8 @@
 package com.siemens.bt.jazz.services.base.utils;
 
 public enum PathRegex {
-  PARAMETER_GROUP("\\{([^\\/}]+)\\}"),
   PARAMETER_MATCH("\\{[^\\/]+\\}"),
-  PARAMETER_REPLACEMENT("([^\\/]+)");
+  PARAMETER_GROUP("([^\\/]+)");
 
   private final String pattern;
 

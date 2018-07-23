@@ -25,8 +25,7 @@ public class PathParameters {
     HashMap<String, String> parameters = new HashMap<>();
 
     String regex =
-        path.replaceAll(
-            PathRegex.PARAMETER_GROUP.toString(), PathRegex.PARAMETER_REPLACEMENT.toString());
+        path.replaceAll(PathRegex.PARAMETER_MATCH.toString(), PathRegex.PARAMETER_GROUP.toString());
     Pattern pattern = Pattern.compile(regex);
     Matcher names = pattern.matcher(path);
     Matcher values = pattern.matcher(url);
