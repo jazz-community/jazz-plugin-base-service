@@ -4,6 +4,7 @@ import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.siemens.bt.jazz.services.base.rest.service.DefaultRestService;
 import com.siemens.bt.jazz.services.base.router.factory.RestFactory;
 import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
+import com.siemens.bt.jazz.services.base.utils.PathRegex;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,11 @@ public class ServiceMap {
 
   public ServiceFactory getFactory(HttpServletRequest request, String uri) {
     for (Map.Entry<String, Map<HttpMethod, ServiceFactory>> entry : services.entrySet()) {
-      String regex = entry.getKey().replaceAll("\\{[^\\/]+\\}", "([^\\/]+)");
+      String regex =
+          entry
+              .getKey()
+              .replaceAll(
+                  PathRegex.PARAMETER_MATCH.toString(), PathRegex.PARAMETER_REPLACEMENT.toString());
       Pattern pattern = Pattern.compile(regex);
       HttpMethod method = HttpMethod.fromString(request.getMethod());
       if (pattern.matcher(uri).matches() && entry.getValue().containsKey(method)) {

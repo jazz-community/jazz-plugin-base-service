@@ -1,5 +1,6 @@
 package com.siemens.bt.jazz.services.base.rest.parameters;
 
+import com.siemens.bt.jazz.services.base.utils.PathRegex;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -23,7 +24,9 @@ public class PathParameters {
   private static Map<String, String> makeMap(String path, String url) {
     HashMap<String, String> parameters = new HashMap<>();
 
-    String regex = path.replaceAll("\\{([^\\/}]+)\\}", "([^\\\\/]+)");
+    String regex =
+        path.replaceAll(
+            PathRegex.PARAMETER_GROUP.toString(), PathRegex.PARAMETER_REPLACEMENT.toString());
     Pattern pattern = Pattern.compile(regex);
     Matcher names = pattern.matcher(path);
     Matcher values = pattern.matcher(url);
