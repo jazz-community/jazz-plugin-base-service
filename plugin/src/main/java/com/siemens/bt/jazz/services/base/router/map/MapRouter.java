@@ -3,6 +3,7 @@ package com.siemens.bt.jazz.services.base.router.map;
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.ibm.team.repository.service.TeamRawService;
 import com.siemens.bt.jazz.services.base.configuration.Configuration;
+import com.siemens.bt.jazz.services.base.configuration.ServiceConfigurator;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import com.siemens.bt.jazz.services.base.router.Router;
@@ -32,6 +33,15 @@ public class MapRouter implements Router {
   }
 
   @Override
+  public void get(
+      String path,
+      Class<? extends AbstractRestService> service,
+      ServiceConfigurator... configurators) {
+    Configuration configuration = new Configuration(configurators);
+    get(new RestFactory(path, service, configuration));
+  }
+
+  @Override
   public void put(String path, Class<? extends AbstractRestService> service) {
     put(new RestFactory(path, service));
   }
@@ -39,6 +49,15 @@ public class MapRouter implements Router {
   @Override
   public void put(
       String path, Class<? extends AbstractRestService> service, Configuration configuration) {
+    put(new RestFactory(path, service, configuration));
+  }
+
+  @Override
+  public void put(
+      String path,
+      Class<? extends AbstractRestService> service,
+      ServiceConfigurator... configurators) {
+    Configuration configuration = new Configuration(configurators);
     put(new RestFactory(path, service, configuration));
   }
 
@@ -54,6 +73,15 @@ public class MapRouter implements Router {
   }
 
   @Override
+  public void post(
+      String path,
+      Class<? extends AbstractRestService> service,
+      ServiceConfigurator... configurators) {
+    Configuration configuration = new Configuration(configurators);
+    post(new RestFactory(path, service, configuration));
+  }
+
+  @Override
   public void delete(String path, Class<? extends AbstractRestService> service) {
     delete(new RestFactory(path, service));
   }
@@ -61,6 +89,15 @@ public class MapRouter implements Router {
   @Override
   public void delete(
       String path, Class<? extends AbstractRestService> service, Configuration configuration) {
+    delete(new RestFactory(path, service, configuration));
+  }
+
+  @Override
+  public void delete(
+      String path,
+      Class<? extends AbstractRestService> service,
+      ServiceConfigurator... configurators) {
+    Configuration configuration = new Configuration(configurators);
     delete(new RestFactory(path, service, configuration));
   }
 
