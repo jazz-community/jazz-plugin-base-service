@@ -24,19 +24,23 @@ public interface Router {
    * @param factory Factory to use when building rest actions
    */
   void addService(HttpMethod method, ServiceFactory factory);
-  void addService(HttpMethod method, ServiceFactory factory, Configuration configuration);
 
   void get(String path, Class<? extends AbstractRestService> service);
+
   void get(String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void put(String path, Class<? extends AbstractRestService> service);
+
   void put(String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void post(String path, Class<? extends AbstractRestService> service);
+
   void post(String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void delete(String path, Class<? extends AbstractRestService> service);
-  void delete(String path, Class<? extends AbstractRestService> service, Configuration configuration);
+
+  void delete(
+      String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void get(ServiceFactory factory);
 

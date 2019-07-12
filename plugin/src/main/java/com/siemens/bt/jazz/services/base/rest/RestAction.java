@@ -21,8 +21,6 @@ public interface RestAction {
    */
   void execute() throws Exception;
 
-  /**
-   * Optional post-execution hook for actions that are run after the execute phase.
-   */
+  /** Optional post-execution hook for actions that are run after the execute phase. */
   void cleanUp();
 }
