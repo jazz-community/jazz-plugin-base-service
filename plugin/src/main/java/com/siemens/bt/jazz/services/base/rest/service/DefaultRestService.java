@@ -1,6 +1,7 @@
 package com.siemens.bt.jazz.services.base.rest.service;
 
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.configuration.Configuration;
 import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
 import java.io.IOException;
 import java.io.Writer;
@@ -23,14 +24,12 @@ import org.apache.commons.logging.Log;
  */
 public final class DefaultRestService extends AbstractRestService {
 
-  public DefaultRestService(
-      String uri,
-      Log log,
-      HttpServletRequest request,
+  public DefaultRestService(String uri, Log log, HttpServletRequest request,
       HttpServletResponse response,
+      Configuration configuration,
       TeamRawService parentService,
       PathParameters pathParameters) {
-    super(uri, log, request, response, parentService, pathParameters);
+    super(uri, log, request, response, configuration, parentService, pathParameters);
   }
 
   /**

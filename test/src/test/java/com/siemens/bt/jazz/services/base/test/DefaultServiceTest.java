@@ -2,6 +2,7 @@ package com.siemens.bt.jazz.services.base.test;
 
 import static org.junit.Assert.assertEquals;
 
+import com.siemens.bt.jazz.services.base.configuration.Configuration;
 import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
 import com.siemens.bt.jazz.services.base.rest.service.DefaultRestService;
 import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
@@ -32,6 +33,7 @@ public class DefaultServiceTest {
             new TestLogger(),
             MockRequestFactory.httpGetRequest(),
             mockResponse,
+            new Configuration(),
             new MockTeamService(),
             new PathParameters("", ""));
 

@@ -1,6 +1,7 @@
 package com.siemens.bt.jazz.services.base.rest;
 
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.configuration.Configuration;
 import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import java.lang.reflect.Constructor;
@@ -27,6 +28,7 @@ public class RestActionBuilder {
   protected String uri;
   protected HttpServletRequest request;
   protected HttpServletResponse response;
+  protected Configuration configuration;
   protected Log log;
   protected TeamRawService parentService;
 
@@ -79,6 +81,11 @@ public class RestActionBuilder {
     return this;
   }
 
+  public RestActionBuilder setConfiguration(Configuration configuration) {
+    this.configuration = configuration;
+    return this;
+  }
+
   /**
    * Set a TeamRawService.
    *
@@ -106,10 +113,11 @@ public class RestActionBuilder {
             Log.class,
             HttpServletRequest.class,
             HttpServletResponse.class,
+            Configuration.class,
             TeamRawService.class,
             PathParameters.class);
 
     return constructor.newInstance(
-        uri, log, request, response, parentService, new PathParameters(path, uri));
+        uri, log, request, response, configuration, parentService, new PathParameters(path, uri));
   }
 }
