@@ -2,7 +2,6 @@ package com.siemens.bt.jazz.services.base.test;
 
 import static org.junit.Assert.*;
 
-import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
@@ -74,7 +73,7 @@ public class RestActionBuilderTest {
     assertSame(mockResponse, responseField.get(service));
 
     Field uriField = superClass.getDeclaredField("uri");
-    responseField.setAccessible(true);
+    uriField.setAccessible(true);
     assertSame(uri, uriField.get(service));
   }
 

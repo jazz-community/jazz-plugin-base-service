@@ -37,6 +37,7 @@ public class RestActionBuilder {
 
   /**
    * Sets the URI passed in from the calling servlet
+   *
    * @param uri String representation of the URI resolving this service
    * @return RestActionBuilder in construction
    */
@@ -109,11 +110,6 @@ public class RestActionBuilder {
             PathParameters.class);
 
     return constructor.newInstance(
-        uri,
-        log,
-        request,
-        response,
-        parentService,
-        new PathParameters(path, uri));
+        uri, log, request, response, parentService, new PathParameters(path, uri));
   }
 }

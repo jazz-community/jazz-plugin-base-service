@@ -2,7 +2,6 @@ package com.siemens.bt.jazz.services.base.test;
 
 import static org.junit.Assert.assertEquals;
 
-import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
 import com.siemens.bt.jazz.services.base.rest.service.DefaultRestService;
 import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
