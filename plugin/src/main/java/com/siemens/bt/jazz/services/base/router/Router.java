@@ -2,6 +2,7 @@ package com.siemens.bt.jazz.services.base.router;
 
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.configuration.Configuration;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
@@ -23,14 +24,19 @@ public interface Router {
    * @param factory Factory to use when building rest actions
    */
   void addService(HttpMethod method, ServiceFactory factory);
+  void addService(HttpMethod method, ServiceFactory factory, Configuration configuration);
 
   void get(String path, Class<? extends AbstractRestService> service);
+  void get(String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void put(String path, Class<? extends AbstractRestService> service);
+  void put(String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void post(String path, Class<? extends AbstractRestService> service);
+  void post(String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void delete(String path, Class<? extends AbstractRestService> service);
+  void delete(String path, Class<? extends AbstractRestService> service, Configuration configuration);
 
   void get(ServiceFactory factory);
 
