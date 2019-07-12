@@ -25,4 +25,8 @@ public class Configuration {
   public void add(Collection<ServiceConfigurator> configurators) {
     configurations.addAll(configurators);
   }
+
+  public void merge(Configuration other) {
+    this.configurations.addAll(other.get());
+  }
 }
