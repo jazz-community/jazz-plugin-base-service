@@ -78,7 +78,9 @@ public abstract class BaseService extends TeamRawService {
     try {
       RestActionBuilder builder = prepareRequest(uri, request, response);
       RestAction action = builder.create();
+      action.prepare();
       action.execute();
+      action.cleanUp();
     } catch (IOException e) {
       throw e;
     } catch (Exception e) {
