@@ -2,7 +2,6 @@ package com.siemens.bt.jazz.services.base.rest;
 
 import com.ibm.team.repository.service.TeamRawService;
 import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
-import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -25,15 +24,25 @@ public class RestActionBuilder {
 
   protected final Class<? extends AbstractRestService> serviceClass;
   protected final String path;
+  protected String uri;
   protected HttpServletRequest request;
   protected HttpServletResponse response;
   protected Log log;
-  protected RestRequest restRequest;
   protected TeamRawService parentService;
 
   public RestActionBuilder(String path, Class<? extends AbstractRestService> serviceClass) {
     this.path = path;
     this.serviceClass = serviceClass;
+  }
+
+  /**
+   * Sets the URI passed in from the calling servlet
+   * @param uri String representation of the URI resolving this service
+   * @return RestActionBuilder in construction
+   */
+  public RestActionBuilder setUri(String uri) {
+    this.uri = uri;
+    return this;
   }
 
   /**
@@ -70,17 +79,6 @@ public class RestActionBuilder {
   }
 
   /**
-   * Set a RestRequest.
-   *
-   * @param restRequest Summary of REST call information
-   * @return RestActionBuilder in construction
-   */
-  public RestActionBuilder setRestRequest(RestRequest restRequest) {
-    this.restRequest = restRequest;
-    return this;
-  }
-
-  /**
    * Set a TeamRawService.
    *
    * <p>This is necessary for services that reflect upon the form of the service itself.
@@ -103,19 +101,19 @@ public class RestActionBuilder {
           InstantiationException {
     Constructor<? extends AbstractRestService> constructor =
         serviceClass.getConstructor(
+            String.class,
             Log.class,
             HttpServletRequest.class,
             HttpServletResponse.class,
-            RestRequest.class,
             TeamRawService.class,
             PathParameters.class);
 
     return constructor.newInstance(
+        uri,
         log,
         request,
         response,
-        restRequest,
         parentService,
-        new PathParameters(path, restRequest.toString()));
+        new PathParameters(path, uri));
   }
 }

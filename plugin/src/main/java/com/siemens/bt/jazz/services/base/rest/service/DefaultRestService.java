@@ -2,7 +2,6 @@ package com.siemens.bt.jazz.services.base.rest.service;
 
 import com.ibm.team.repository.service.TeamRawService;
 import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
-import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import java.io.IOException;
 import java.io.Writer;
 import java.net.URISyntaxException;
@@ -25,13 +24,13 @@ import org.apache.commons.logging.Log;
 public final class DefaultRestService extends AbstractRestService {
 
   public DefaultRestService(
+      String uri,
       Log log,
       HttpServletRequest request,
       HttpServletResponse response,
-      RestRequest restRequest,
       TeamRawService parentService,
       PathParameters pathParameters) {
-    super(log, request, response, restRequest, parentService, pathParameters);
+    super(uri, log, request, response, parentService, pathParameters);
   }
 
   /**
@@ -48,7 +47,7 @@ public final class DefaultRestService extends AbstractRestService {
     String answer =
         String.format(
             "The requested service \"%s\" doesn't exist for method \"%s\".",
-            restRequest, request.getMethod());
+            uri, request.getMethod());
 
     writer.write(answer);
   }

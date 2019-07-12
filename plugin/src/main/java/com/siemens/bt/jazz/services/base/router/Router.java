@@ -3,7 +3,6 @@ package com.siemens.bt.jazz.services.base.router;
 import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import com.siemens.bt.jazz.services.base.router.factory.ServiceFactory;
 import javax.servlet.http.HttpServletRequest;
@@ -48,13 +47,12 @@ public interface Router {
    * @param log Log object
    * @param request The original HTTP Request
    * @param response The response object for writing back responses to the client
-   * @param restRequest A summary of the HTTP request, mainly used for navigation
    * @return A rest action that can be executed
    */
   RestActionBuilder prepareAction(
+      String uri,
       TeamRawService parentService,
       Log log,
       HttpServletRequest request,
-      HttpServletResponse response,
-      RestRequest restRequest);
+      HttpServletResponse response);
 }

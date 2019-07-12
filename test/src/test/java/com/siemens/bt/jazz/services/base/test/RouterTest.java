@@ -6,7 +6,6 @@ import static org.junit.Assert.assertSame;
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import com.siemens.bt.jazz.services.base.rest.service.DefaultRestService;
 import com.siemens.bt.jazz.services.base.router.Router;
 import com.siemens.bt.jazz.services.base.router.map.MapRouter;
@@ -36,11 +35,11 @@ public class RouterTest {
 
     RestActionBuilder builder =
         router.prepareAction(
+            "/",
             new MockTeamService(),
             new TestLogger(),
             MockRequestFactory.httpGetRequest(),
-            response,
-            new RestRequest(HttpConstants.HttpMethod.GET, "/"));
+            response);
 
     RestAction action = builder.create();
     assertEquals(TestService.class, action.getClass());
@@ -57,11 +56,11 @@ public class RouterTest {
 
     RestActionBuilder builder =
         router.prepareAction(
+            "no_service_here",
             new MockTeamService(),
             new TestLogger(),
             MockRequestFactory.httpGetRequest(),
-            response,
-            new RestRequest(HttpConstants.HttpMethod.GET, "no_service_here"));
+            response);
 
     RestAction action = builder.create();
 
@@ -80,11 +79,11 @@ public class RouterTest {
 
     RestActionBuilder builder =
         router.prepareAction(
+            "test/service/path",
             new MockTeamService(),
             new TestLogger(),
             MockRequestFactory.httpGetRequest(),
-            new MockResponse(),
-            new RestRequest(HttpConstants.HttpMethod.GET, "test/service/path"));
+            new MockResponse());
 
     RestAction action = builder.create();
 

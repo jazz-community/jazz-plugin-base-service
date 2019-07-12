@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import com.ibm.team.jfs.app.http.util.HttpConstants;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import com.siemens.bt.jazz.services.base.test.helper.MockRequestFactory;
 import com.siemens.bt.jazz.services.base.test.helper.TestLogger;
@@ -32,14 +31,14 @@ public class RestActionBuilderTest {
     MockTeamService mockParent = new MockTeamService();
     MockRequest mockRequest = MockRequestFactory.httpGetRequest();
     MockResponse mockResponse = new MockResponse();
-    RestRequest restRequest = new RestRequest(HttpConstants.HttpMethod.GET, "doesn't matter");
+    String uri = "doesn't matter";
 
     testBuilder
+        .setUri(uri)
         .setLog(log)
         .setParentService(mockParent)
         .setRequest(mockRequest)
-        .setResponse(mockResponse)
-        .setRestRequest(restRequest);
+        .setResponse(mockResponse);
 
     RestAction service = testBuilder.create();
 
@@ -74,9 +73,9 @@ public class RestActionBuilderTest {
     responseField.setAccessible(true);
     assertSame(mockResponse, responseField.get(service));
 
-    Field restField = superClass.getDeclaredField("restRequest");
-    restField.setAccessible(true);
-    assertSame(restRequest, restField.get(service));
+    Field uriField = superClass.getDeclaredField("uri");
+    responseField.setAccessible(true);
+    assertSame(uri, uriField.get(service));
   }
 
   @Before
