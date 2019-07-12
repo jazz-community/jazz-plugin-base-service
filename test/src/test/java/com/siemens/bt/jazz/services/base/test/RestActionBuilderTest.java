@@ -2,6 +2,7 @@ package com.siemens.bt.jazz.services.base.test;
 
 import static org.junit.Assert.*;
 
+import com.siemens.bt.jazz.services.base.configuration.Configuration;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
@@ -37,7 +38,8 @@ public class RestActionBuilderTest {
         .setLog(log)
         .setParentService(mockParent)
         .setRequest(mockRequest)
-        .setResponse(mockResponse);
+        .setResponse(mockResponse)
+        .setConfiguration(new Configuration());
 
     RestAction service = testBuilder.create();
 

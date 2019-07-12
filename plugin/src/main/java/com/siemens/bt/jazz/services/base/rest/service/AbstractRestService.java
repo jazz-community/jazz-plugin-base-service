@@ -37,9 +37,7 @@ public abstract class AbstractRestService implements RestAction {
     this.pathParameters = pathParameters;
   }
 
-  /**
-   * The default implementation applies all provided configurations in no pre-defined order
-   */
+  /** The default implementation applies all provided configurations in no pre-defined order */
   @Override
   public void prepare() {
     for (ServiceConfigurator configurator : configuration.get()) {
@@ -48,6 +46,5 @@ public abstract class AbstractRestService implements RestAction {
   }
 
   @Override
-  public void cleanUp() {
-  }
+  public void cleanUp() {}
 }

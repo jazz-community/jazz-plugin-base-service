@@ -81,6 +81,12 @@ public class RestActionBuilder {
     return this;
   }
 
+  /**
+   * Add a configuration wrapper to this RestAction
+   *
+   * @param configuration Zero or more configurators that are applied before this action is executed
+   * @return RestActionBuilder in construction
+   */
   public RestActionBuilder setConfiguration(Configuration configuration) {
     this.configuration = configuration;
     return this;

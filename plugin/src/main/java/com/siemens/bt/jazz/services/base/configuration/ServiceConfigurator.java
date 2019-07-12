@@ -6,5 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 
 public interface ServiceConfigurator {
-  void configure(Log log, HttpServletRequest request, HttpServletResponse response, TeamRawService parentService);
+  void configure(
+      Log log,
+      HttpServletRequest request,
+      HttpServletResponse response,
+      TeamRawService parentService);
 }

@@ -10,7 +10,10 @@ import org.apache.commons.logging.Log;
 
 public class TestService extends AbstractRestService {
 
-  public TestService(String uri, Log log, HttpServletRequest request,
+  public TestService(
+      String uri,
+      Log log,
+      HttpServletRequest request,
       HttpServletResponse response,
       Configuration configuration,
       TeamRawService parentService,

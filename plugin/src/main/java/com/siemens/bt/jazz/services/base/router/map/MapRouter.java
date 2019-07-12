@@ -73,7 +73,6 @@ public class MapRouter implements Router {
         .setParentService(parentService)
         .setLog(log)
         .setRequest(request)
-        .setResponse(response)
-        .setConfiguration(configuration);
+        .setResponse(response);
   }
 }

@@ -24,7 +24,10 @@ import org.apache.commons.logging.Log;
  */
 public final class DefaultRestService extends AbstractRestService {
 
-  public DefaultRestService(String uri, Log log, HttpServletRequest request,
+  public DefaultRestService(
+      String uri,
+      Log log,
+      HttpServletRequest request,
       HttpServletResponse response,
       Configuration configuration,
       TeamRawService parentService,
