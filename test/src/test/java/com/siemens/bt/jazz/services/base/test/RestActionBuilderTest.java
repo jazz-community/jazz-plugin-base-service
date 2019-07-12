@@ -81,6 +81,6 @@ public class RestActionBuilderTest {
 
   @Before
   public void setUp() throws Exception {
-    this.testBuilder = new RestActionBuilder("/", TestService.class);
+    this.testBuilder = new RestActionBuilder("/", TestService.class, new Configuration());
   }
 }

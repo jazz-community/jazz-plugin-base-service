@@ -22,7 +22,7 @@ public class RestFactory implements ServiceFactory {
 
   @Override
   public RestActionBuilder getBuilder() {
-    return new RestActionBuilder(path, serviceClass);
+    return new RestActionBuilder(path, serviceClass, configuration);
   }
 
   @Override

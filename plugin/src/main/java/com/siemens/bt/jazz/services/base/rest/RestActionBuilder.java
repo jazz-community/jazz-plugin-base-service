@@ -32,9 +32,11 @@ public class RestActionBuilder {
   protected Log log;
   protected TeamRawService parentService;
 
-  public RestActionBuilder(String path, Class<? extends AbstractRestService> serviceClass) {
+  public RestActionBuilder(
+      String path, Class<? extends AbstractRestService> serviceClass, Configuration configuration) {
     this.path = path;
     this.serviceClass = serviceClass;
+    this.configuration = configuration;
   }
 
   /**
