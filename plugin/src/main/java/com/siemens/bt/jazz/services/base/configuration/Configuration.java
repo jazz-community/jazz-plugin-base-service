@@ -14,6 +14,12 @@ public class Configuration {
     configurations.addAll(Arrays.asList(configurators));
   }
 
+  public Configuration(Configuration... configurations) {
+    for (Configuration c : configurations) {
+      this.configurations.addAll(c.get());
+    }
+  }
+
   public Collection<ServiceConfigurator> get() {
     return configurations;
   }
@@ -28,15 +34,5 @@ public class Configuration {
 
   public void merge(Configuration other) {
     this.configurations.addAll(other.get());
-  }
-
-  public static Configuration fromConfigurations(Configuration... configurations) {
-    Configuration configuration = new Configuration();
-
-    for (Configuration c : configurations) {
-      configuration.merge(c);
-    }
-
-    return configuration;
   }
 }
