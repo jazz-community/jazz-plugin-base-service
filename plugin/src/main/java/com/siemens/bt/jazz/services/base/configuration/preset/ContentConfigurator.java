@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 
-public class EncodingConfigurator implements ServiceConfigurator {
+public class ContentConfigurator implements ServiceConfigurator {
 
-  private final String encoding;
+  private final String contentType;
 
-  public EncodingConfigurator(String encoding) {
-    this.encoding = encoding;
+  public ContentConfigurator(String contentType) {
+    this.contentType = contentType;
   }
 
   @Override
@@ -20,6 +20,6 @@ public class EncodingConfigurator implements ServiceConfigurator {
       HttpServletRequest request,
       HttpServletResponse response,
       TeamRawService parentService) {
-    response.setCharacterEncoding(encoding);
+    response.setContentType(contentType);
   }
 }

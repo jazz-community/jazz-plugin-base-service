@@ -85,11 +85,9 @@ public abstract class BaseService extends TeamRawService {
       throw e;
     } catch (Exception e) {
       // catch everything and log. Makes sure that there is no checked exception from our service
-      // back
-      // to jazz, except for the expected IOException when the response isn't writable. We need to
-      // make
-      // sure that our plug-in conforms to the contract that no exceptions bubble out into the
-      // system.
+      // back to jazz, except for the expected IOException when the response isn't writable. We need
+      // to make sure that our plug-in conforms to the contract that no exceptions bubble out into
+      // the system.
       super.getLog().error(e);
       this.http500return(request, response, e);
     }
