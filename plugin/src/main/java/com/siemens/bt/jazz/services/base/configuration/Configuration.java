@@ -10,7 +10,7 @@ public class Configuration {
 
   public Configuration() {}
 
-  public Configuration(ServiceConfigurator[] configurators) {
+  public Configuration(ServiceConfigurator... configurators) {
     configurations.addAll(Arrays.asList(configurators));
   }
 
@@ -28,5 +28,15 @@ public class Configuration {
 
   public void merge(Configuration other) {
     this.configurations.addAll(other.get());
+  }
+
+  public static Configuration fromConfigurations(Configuration... configurations) {
+    Configuration configuration = new Configuration();
+    
+    for (Configuration c : configurations) {
+      configuration.merge(c);
+    }
+
+    return configuration;
   }
 }
