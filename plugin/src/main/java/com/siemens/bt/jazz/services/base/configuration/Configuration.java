@@ -32,7 +32,7 @@ public class Configuration {
 
   public static Configuration fromConfigurations(Configuration... configurations) {
     Configuration configuration = new Configuration();
-    
+
     for (Configuration c : configurations) {
       configuration.merge(c);
     }
