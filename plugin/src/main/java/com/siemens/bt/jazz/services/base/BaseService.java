@@ -21,9 +21,7 @@ public abstract class BaseService extends TeamRawService {
 
   protected final Router router = new MapRouter();
 
-  /**
-   * <p>This constructor is only called by the Jazz class loader.
-   */
+  /** This constructor is only called by the Jazz class loader. */
   public BaseService() {
     super();
   }
