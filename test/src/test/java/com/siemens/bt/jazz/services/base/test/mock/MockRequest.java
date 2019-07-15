@@ -3,6 +3,7 @@ package com.siemens.bt.jazz.services.base.test.mock;
 import com.siemens.bt.jazz.services.base.test.helper.TestInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.Collection;
@@ -189,7 +190,7 @@ public class MockRequest implements HttpServletRequest {
 
   @Override
   public String getCharacterEncoding() {
-    throw new RuntimeException("Not implemented in Mock.");
+    return "UTF-8";
   }
 
   @Override
@@ -254,7 +255,8 @@ public class MockRequest implements HttpServletRequest {
 
   @Override
   public BufferedReader getReader() throws IOException {
-    throw new RuntimeException("Not implemented in Mock.");
+    StringReader stringReader = new StringReader(body);
+    return new BufferedReader(stringReader);
   }
 
   @Override
