@@ -65,6 +65,16 @@ public class RequestReader {
     return new Gson().fromJson(request.getReader(), JsonObject.class);
   }
 
+  public static JsonObject readAsJson(HttpServletRequest request, String charset)
+      throws IOException {
+    return readAsJson(request, charset, JsonObject.class);
+  }
+
+  public static <T> T readAsJson(HttpServletRequest request, String charset, Class<T> type)
+      throws IOException {
+    return new Gson().fromJson(new InputStreamReader(request.getInputStream(), charset), type);
+  }
+
   /**
    * Reads the body of a request and parses it as a JSON array.
    *
