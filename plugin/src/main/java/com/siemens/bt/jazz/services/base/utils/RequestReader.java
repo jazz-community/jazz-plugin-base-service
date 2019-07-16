@@ -62,7 +62,7 @@ public class RequestReader {
    * @throws IOException If input stream is invalid
    */
   public static JsonObject readAsJson(HttpServletRequest request) throws IOException {
-    return new Gson().fromJson(request.getReader(), JsonObject.class);
+    return readAsJson(request, request.getCharacterEncoding(), JsonObject.class);
   }
 
   public static JsonObject readAsJson(HttpServletRequest request, String charset)
@@ -86,7 +86,11 @@ public class RequestReader {
    * @throws IOException If input stream is invalid
    */
   public static JsonArray readAsArray(HttpServletRequest request) throws IOException {
-    String content = RequestReader.readAsString(request);
+    return readAsArray(request, request.getCharacterEncoding());
+  }
+
+  public static JsonArray readAsArray(HttpServletRequest request, String charset) throws IOException {
+    String content = RequestReader.readAsString(request, charset);
     return new Gson().fromJson(content, JsonArray.class);
   }
 
