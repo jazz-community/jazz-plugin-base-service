@@ -4,7 +4,6 @@ import com.ibm.team.jfs.app.http.util.HttpConstants.HttpMethod;
 import com.ibm.team.repository.service.TeamRawService;
 import com.siemens.bt.jazz.services.base.rest.RestAction;
 import com.siemens.bt.jazz.services.base.rest.RestActionBuilder;
-import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import com.siemens.bt.jazz.services.base.router.Router;
 import com.siemens.bt.jazz.services.base.router.map.MapRouter;
 import java.io.IOException;
@@ -22,11 +21,7 @@ public abstract class BaseService extends TeamRawService {
 
   protected final Router router = new MapRouter();
 
-  /**
-   * Constructs a new ClearQuestService
-   *
-   * <p>This constructor is only called by the Jazz class loader.
-   */
+  /** This constructor is only called by the Jazz class loader. */
   public BaseService() {
     super();
   }
@@ -79,16 +74,16 @@ public abstract class BaseService extends TeamRawService {
     try {
       RestActionBuilder builder = prepareRequest(uri, request, response);
       RestAction action = builder.create();
+      action.prepare();
       action.execute();
+      action.cleanUp();
     } catch (IOException e) {
       throw e;
     } catch (Exception e) {
       // catch everything and log. Makes sure that there is no checked exception from our service
-      // back
-      // to jazz, except for the expected IOException when the response isn't writable. We need to
-      // make
-      // sure that our plug-in conforms to the contract that no exceptions bubble out into the
-      // system.
+      // back to jazz, except for the expected IOException when the response isn't writable. We need
+      // to make sure that our plug-in conforms to the contract that no exceptions bubble out into
+      // the system.
       super.getLog().error(e);
       this.http500return(request, response, e);
     }
@@ -97,8 +92,6 @@ public abstract class BaseService extends TeamRawService {
   protected final RestActionBuilder prepareRequest(
       String uri, HttpServletRequest request, HttpServletResponse response) {
     HttpMethod method = HttpMethod.fromString(request.getMethod());
-    @SuppressWarnings("unchecked")
-    RestRequest restRequest = new RestRequest(method, uri, request.getParameterMap());
-    return router.prepareAction(this, this.getLog(), request, response, restRequest);
+    return router.prepareAction(uri, this, this.getLog(), request, response);
   }
 }

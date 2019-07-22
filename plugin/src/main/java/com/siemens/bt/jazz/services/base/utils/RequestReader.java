@@ -34,8 +34,9 @@ public class RequestReader {
    * @return Content of request as string
    * @throws IOException If input stream is invalid
    */
-  public static String readAsString(HttpServletRequest request) throws IOException {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
+  public static String readAsString(HttpServletRequest request, String charset) throws IOException {
+    BufferedReader reader =
+        new BufferedReader(new InputStreamReader(request.getInputStream(), charset));
 
     StringBuilder builder = new StringBuilder(request.getContentLength());
 
@@ -44,6 +45,10 @@ public class RequestReader {
     }
 
     return builder.toString();
+  }
+
+  public static String readAsString(HttpServletRequest request) throws IOException {
+    return readAsString(request, request.getCharacterEncoding());
   }
 
   /**
@@ -57,8 +62,17 @@ public class RequestReader {
    * @throws IOException If input stream is invalid
    */
   public static JsonObject readAsJson(HttpServletRequest request) throws IOException {
-    String content = RequestReader.readAsString(request);
-    return new Gson().fromJson(content, JsonObject.class);
+    return readAsJson(request, request.getCharacterEncoding(), JsonObject.class);
+  }
+
+  public static JsonObject readAsJson(HttpServletRequest request, String charset)
+      throws IOException {
+    return readAsJson(request, charset, JsonObject.class);
+  }
+
+  public static <T> T readAsJson(HttpServletRequest request, String charset, Class<T> type)
+      throws IOException {
+    return new Gson().fromJson(new InputStreamReader(request.getInputStream(), charset), type);
   }
 
   /**
@@ -72,7 +86,11 @@ public class RequestReader {
    * @throws IOException If input stream is invalid
    */
   public static JsonArray readAsArray(HttpServletRequest request) throws IOException {
-    String content = RequestReader.readAsString(request);
+    return readAsArray(request, request.getCharacterEncoding());
+  }
+
+  public static JsonArray readAsArray(HttpServletRequest request, String charset) throws IOException {
+    String content = RequestReader.readAsString(request, charset);
     return new Gson().fromJson(content, JsonArray.class);
   }
 

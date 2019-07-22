@@ -1,8 +1,8 @@
 package com.siemens.bt.jazz.services.base.rest;
 
 import com.ibm.team.repository.service.TeamRawService;
+import com.siemens.bt.jazz.services.base.configuration.Configuration;
 import com.siemens.bt.jazz.services.base.rest.parameters.PathParameters;
-import com.siemens.bt.jazz.services.base.rest.parameters.RestRequest;
 import com.siemens.bt.jazz.services.base.rest.service.AbstractRestService;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -25,15 +25,29 @@ public class RestActionBuilder {
 
   protected final Class<? extends AbstractRestService> serviceClass;
   protected final String path;
+  protected String uri;
   protected HttpServletRequest request;
   protected HttpServletResponse response;
+  protected Configuration configuration;
   protected Log log;
-  protected RestRequest restRequest;
   protected TeamRawService parentService;
 
-  public RestActionBuilder(String path, Class<? extends AbstractRestService> serviceClass) {
+  public RestActionBuilder(
+      String path, Class<? extends AbstractRestService> serviceClass, Configuration configuration) {
     this.path = path;
     this.serviceClass = serviceClass;
+    this.configuration = configuration;
+  }
+
+  /**
+   * Sets the URI passed in from the calling servlet
+   *
+   * @param uri String representation of the URI resolving this service
+   * @return RestActionBuilder in construction
+   */
+  public RestActionBuilder setUri(String uri) {
+    this.uri = uri;
+    return this;
   }
 
   /**
@@ -70,13 +84,13 @@ public class RestActionBuilder {
   }
 
   /**
-   * Set a RestRequest.
+   * Add a configuration wrapper to this RestAction
    *
-   * @param restRequest Summary of REST call information
+   * @param configuration Zero or more configurators that are applied before this action is executed
    * @return RestActionBuilder in construction
    */
-  public RestActionBuilder setRestRequest(RestRequest restRequest) {
-    this.restRequest = restRequest;
+  public RestActionBuilder setConfiguration(Configuration configuration) {
+    this.configuration = configuration;
     return this;
   }
 
@@ -103,19 +117,15 @@ public class RestActionBuilder {
           InstantiationException {
     Constructor<? extends AbstractRestService> constructor =
         serviceClass.getConstructor(
+            String.class,
             Log.class,
             HttpServletRequest.class,
             HttpServletResponse.class,
-            RestRequest.class,
+            Configuration.class,
             TeamRawService.class,
             PathParameters.class);
 
     return constructor.newInstance(
-        log,
-        request,
-        response,
-        restRequest,
-        parentService,
-        new PathParameters(path, restRequest.toString()));
+        uri, log, request, response, configuration, parentService, new PathParameters(path, uri));
   }
 }
